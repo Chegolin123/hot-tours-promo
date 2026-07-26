@@ -1,737 +1,514 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html class="scroll-smooth" lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>План продвижения — Все Горящие туры Отели</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          "primary-container": "#1a2332",
+          "on-surface": "#191c1e",
+          "on-primary": "#ffffff",
+          "surface-container-low": "#f2f4f7",
+          "surface-container-lowest": "#ffffff",
+          "error": "#ba1a1a",
+          "error-container": "#ffdad6",
+          "on-error-container": "#93000a",
+          "alert-red": "#c04030",
+          "outline-variant": "#c5c6cc",
+          "slate-grey": "#5a6a7e",
+          "success-green": "#2d9d5a",
+          "gold-tint": "rgba(224, 120, 32, 0.12)",
+          "secondary": "#954900",
+          "secondary-container": "#fd8f37",
+          "on-secondary": "#ffffff",
+          "on-secondary-container": "#673100",
+          "primary": "#040d1b",
+          "mist-grey": "#e8ecf0",
+          "on-surface-variant": "#45474c",
+          "background": "#f7f9fc",
+          "surface": "#f7f9fc",
+          "secondary-fixed-dim": "#ffb786",
+          "on-primary-container": "#818a9d",
+          "on-primary-fixed": "#131c2a",
+        },
+        borderRadius: {
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        fontFamily: {
+          "display-hero": ["Montserrat"],
+          "display-hero-mobile": ["Montserrat"],
+          "headline-lg": ["Montserrat"],
+          "headline-md": ["Montserrat"],
+          "metric-xl": ["Inter"],
+          "body-lg": ["Inter"],
+          "body-md": ["Inter"],
+          "caption": ["Inter"],
+          "label-caps": ["Inter"],
+        },
+        fontSize: {
+          "display-hero": ["52px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "800" }],
+          "display-hero-mobile": ["32px", { lineHeight: "1.2", fontWeight: "800" }],
+          "headline-lg": ["32px", { lineHeight: "1.2", fontWeight: "800" }],
+          "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "700" }],
+          "metric-xl": ["38px", { lineHeight: "1.0", fontWeight: "800" }],
+          "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+          "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+          "caption": ["13px", { lineHeight: "1.4", fontWeight: "500" }],
+          "label-caps": ["12px", { lineHeight: "1.0", letterSpacing: "0.1em", fontWeight: "700" }],
+        }
+      }
+    }
+  }
+</script>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; font-size: 16px; }
-  body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background: #f5f7fa;
-    color: #1a2332;
-    line-height: 1.6;
-    overflow-x: hidden;
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(232, 236, 240, 0.8);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
   }
-
-  /* HERO */
-  .hero {
-    position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center;
-    text-align: center; padding: 40px 20px;
-    background: linear-gradient(135deg, #f0f2f5 0%, #fafbfc 30%, #f5f7fa 60%, #f0f2f5 100%);
-    overflow: hidden;
+  .gold-gradient-top {
+    border-top: 3px solid transparent;
+    border-image: linear-gradient(to right, #e07820, #f0a040) 1;
   }
-  .hero::before {
-    content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-    background:
-      radial-gradient(circle at 20% 80%, rgba(255,140,30,0.08) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(255,180,50,0.06) 0%, transparent 50%),
-      radial-gradient(circle at 50% 50%, rgba(0,153,204,0.04) 0%, transparent 60%);
-    animation: heroGlow 8s ease-in-out infinite alternate;
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   }
-  @keyframes heroGlow { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(2%, -2%) scale(1.05); } }
-  .hero-content { position: relative; z-index: 1; max-width: 800px; }
-  .hero-badge {
-    display: inline-block; background: rgba(255,140,30,0.12); border: 1px solid rgba(255,140,30,0.25);
-    color: #e07820; padding: 8px 24px; border-radius: 50px; font-size: 0.9rem;
-    font-weight: 600; letter-spacing: 0.05em; margin-bottom: 32px; animation: fadeInUp 0.6s ease-out;
-  }
-  .hero h1 {
-    font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15;
-    margin-bottom: 20px; animation: fadeInUp 0.6s 0.1s ease-out both;
-  }
-  .hero h1 .gold { background: linear-gradient(135deg, #e07820, #f0a040); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero h1 .white { color: #1a2332; }
-  .hero-subtitle {
-    font-size: 1.1rem; color: #5a6a7e; max-width: 520px; margin: 0 auto 40px;
-    animation: fadeInUp 0.6s 0.2s ease-out both;
-  }
-  .hero-stats {
-    display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
-    animation: fadeInUp 0.6s 0.3s ease-out both;
-  }
-  .hero-stat {
-    background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.06);
-    border-radius: 16px; padding: 22px 26px; min-width: 130px;
-    backdrop-filter: blur(10px); transition: transform 0.3s, border-color 0.3s;
-  }
-  .hero-stat:hover { transform: translateY(-4px); border-color: rgba(255,140,30,0.35); }
-  .hero-stat .num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, #e07820, #f0a040); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: block; line-height: 1.1; }
-  .hero-stat .label { font-size: 0.82rem; color: #5a6a7e; margin-top: 6px; }
-  .scroll-hint {
-    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: 8px;
-    color: #aab4c0; font-size: 0.8rem; animation: fadeInUp 0.6s 0.5s ease-out both;
-  }
-  .scroll-hint .arrow { width: 20px; height: 20px; border-right: 2px solid #aab4c0; border-bottom: 2px solid #aab4c0; transform: rotate(45deg); animation: scrollBounce 2s infinite; }
-  @keyframes scrollBounce { 0%, 100% { transform: rotate(45deg) translateY(0); } 50% { transform: rotate(45deg) translateY(6px); } }
-  @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-
-  /* SECTIONS */
-  section { padding: 100px 20px; position: relative; }
-  .section-inner { max-width: 960px; margin: 0 auto; }
-  .section-tag { display: inline-block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.07em; color: #e07820; text-transform: uppercase; margin-bottom: 16px; }
-  .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; margin-bottom: 14px; color: #1a2332; line-height: 1.2; }
-  .section-subtitle { color: #5a6a7e; font-size: 1rem; max-width: 620px; margin-bottom: 44px; }
-
-  /* Why VK */
-  #why { background: #ffffff; }
-  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
-  .why-card {
-    background: #fafbfc; border: 1px solid #e8ecf0;
-    border-radius: 16px; padding: 28px 22px; text-align: center; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-  }
-  .why-card:hover { transform: translateY(-4px); border-color: rgba(255,140,30,0.3); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
-  .why-card .icon { font-size: 2rem; margin-bottom: 12px; display: block; }
-  .why-card .num { font-size: 1.8rem; font-weight: 800; color: #e07820; }
-  .why-card .label { font-size: 0.85rem; color: #5a6a7e; margin-top: 4px; }
-
-  /* USP */
-  #usp { background: #f5f7fa; }
-  .usp-block {
-    background: linear-gradient(135deg, rgba(255,140,30,0.04), rgba(255,180,50,0.03));
-    border: 1px solid rgba(255,140,30,0.2); border-radius: 24px; padding: 48px 40px;
-    text-align: center; max-width: 720px; margin: 0 auto;
-  }
-  .usp-block .usp-quote {
-    font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 700; color: #1a2332; line-height: 1.4; margin-bottom: 20px;
-  }
-  .usp-block .usp-quote .gold { color: #e07820; }
-  .usp-block .usp-sub { font-size: 0.95rem; color: #5a6a7e; line-height: 1.6; }
-  .usp-vs {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 32px;
-  }
-  .usp-vs-item {
-    background: #fafbfc; border: 1px solid #e8ecf0;
-    border-radius: 12px; padding: 16px; text-align: center;
-  }
-  .usp-vs-item .name { font-weight: 700; color: #1a2332; font-size: 0.9rem; }
-  .usp-vs-item .type { font-size: 0.78rem; color: #889999; margin-top: 2px; }
-  .usp-vs-item.us .name { color: #e07820; }
-  .usp-vs-item.us { border-color: rgba(255,140,30,0.3); background: rgba(255,140,30,0.04); }
-
-  /* Budget */
-  #budget { background: #ffffff; }
-  .budget-bar-wrap { display: flex; border-radius: 20px; overflow: hidden; height: 48px; margin-bottom: 12px; box-shadow: 0 2px 16px rgba(0,0,0,0.08); }
-  .budget-bar-a { background: linear-gradient(135deg, #e07820, #f09030); width: 44%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; color: #fff; }
-  .budget-bar-b { background: linear-gradient(135deg, #f0a040, #ffc278); width: 56%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; color: #3d2000; }
-  .budget-legend { display: flex; gap: 32px; flex-wrap: wrap; justify-content: center; margin-bottom: 36px; }
-  .budget-legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 600; color: #3d3d3d; }
-  .budget-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
-  .budget-dot.a { background: #e07820; }
-  .budget-dot.b { background: #f0a040; }
-  .budget-detail { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
-  .budget-item {
-    background: #fafbfc; border: 1px solid #e8ecf0;
-    border-radius: 12px; padding: 18px 20px;
-  }
-  .budget-item .amt { font-size: 1.4rem; font-weight: 800; color: #e07820; }
-  .budget-item .lbl { font-size: 0.82rem; color: #5a6a7e; margin-top: 2px; }
-
-  /* Segments */
-  #segments { background: #f5f7fa; }
-  .segments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-  .segment-card {
-    background: #fafbfc; border: 1px solid #e8ecf0;
-    border-radius: 20px; padding: 32px 24px; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-    position: relative; overflow: hidden;
-  }
-  .segment-card:hover { transform: translateY(-6px); border-color: rgba(255,140,30,0.4); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
-  .segment-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #e07820, #f0a040); }
-  .segment-card .emoji { font-size: 2rem; display: block; margin-bottom: 14px; }
-  .segment-card h3 { font-size: 1rem; color: #1a2332; margin-bottom: 8px; font-weight: 700; }
-  .segment-card .quote { font-size: 0.88rem; color: #c07018; font-style: italic; margin-bottom: 10px; line-height: 1.4; }
-  .segment-card .who { font-size: 0.78rem; color: #889999; }
-
-  /* Geo */
-  #geo { background: #ffffff; }
-  .geo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
-  .geo-card {
-    background: #fafbfc; border: 1px solid #e8ecf0;
-    border-radius: 16px; padding: 24px;
-  }
-  .geo-card .tier { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; padding: 4px 12px; border-radius: 50px; display: inline-block; margin-bottom: 12px; }
-  .geo-card .tier.t1 { background: rgba(255,140,30,0.12); color: #c07018; }
-  .geo-card .tier.t2 { background: rgba(255,180,50,0.15); color: #b87010; }
-  .geo-card .tier.t3 { background: #e8ecf0; color: #5a6a7e; }
-  .geo-card .pct { font-size: 1.8rem; font-weight: 800; color: #1a2332; margin-bottom: 4px; }
-  .geo-card .cities { font-size: 0.85rem; color: #5a6a7e; line-height: 1.5; }
-
-  /* CPI breakdown */
-  #cpi { background: #f5f7fa; }
-  .cpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
-  .cpi-card {
-    text-align: center; padding: 28px 20px;
-    background: #fafbfc; border: 1px solid #e8ecf0;
-    border-radius: 16px; transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .cpi-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
-  .cpi-card .big { font-size: 2.2rem; font-weight: 800; color: #e07820; line-height: 1.1; }
-  .cpi-card.good .big { color: #2d9d5a; }
-  .cpi-card .label { font-size: 0.85rem; color: #5a6a7e; margin-top: 6px; }
-
-  /* Safety */
-  #safety { background: #ffffff; }
-  .safety-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
-  .safety-card {
-    background: #fafbfc; border: 1px solid #e8ecf0;
-    border-radius: 16px; padding: 26px 22px;
-  }
-  .safety-card .icon { font-size: 1.6rem; display: block; margin-bottom: 10px; }
-  .safety-card h3 { font-size: 0.92rem; color: #1a2332; font-weight: 700; margin-bottom: 6px; }
-  .safety-card p { font-size: 0.83rem; color: #5a6a7e; line-height: 1.5; }
-
-  /* Results */
-  #results { background: linear-gradient(135deg, #fafbfc 0%, #f0f2f5 50%, #fafbfc 100%); }
-  .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 18px; }
-  .result-card {
-    text-align: center; padding: 34px 18px;
-    background: #ffffff; border: 1px solid #e8ecf0;
-    border-radius: 20px; transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .result-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
-  .result-card .big { font-size: 2.4rem; font-weight: 800; background: linear-gradient(135deg, #e07820, #f0a040); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.1; display: block; }
-  .result-card .label { font-size: 0.85rem; color: #5a6a7e; margin-top: 8px; }
-
-  /* Warning */
-  #warning { background: #f5f7fa; }
-  .warning-box {
-    background: rgba(220,60,30,0.04); border: 1px solid rgba(220,60,30,0.2);
-    border-radius: 16px; padding: 32px 28px; max-width: 700px; margin: 0 auto;
-  }
-  .warning-box .warn-icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
-  .warning-box h3 { color: #c04030; font-size: 1.05rem; margin-bottom: 10px; }
-  .warning-box p { color: #664040; font-size: 0.92rem; line-height: 1.6; }
-
-  /* Checklist */
-  #checklist { background: #ffffff; }
-  .checklist-items { display: flex; flex-direction: column; gap: 14px; }
-  .check-item {
-    display: flex; align-items: flex-start; gap: 14px;
-    background: #fafbfc; border: 1px solid #e8ecf0;
-    border-radius: 12px; padding: 20px 24px;
-  }
-  .check-item .box { flex-shrink: 0; width: 24px; height: 24px; border-radius: 6px; border: 2px solid #ccd0d6; margin-top: 2px; }
-  .check-item .text { font-size: 0.93rem; color: #3d4a5a; }
-  .check-item .text strong { color: #1a2332; }
-
-  /* Expansion */
-  #expansion { background: #f5f7fa; }
-  .exp-timeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
-  .exp-card {
-    background: #fafbfc; border: 1px solid #e8ecf0;
-    border-radius: 16px; padding: 24px; text-align: center;
-  }
-  .exp-card .exp-step { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; color: #e07820; text-transform: uppercase; margin-bottom: 8px; }
-  .exp-card h3 { font-size: 1rem; color: #1a2332; margin-bottom: 6px; }
-  .exp-card p { font-size: 0.83rem; color: #5a6a7e; line-height: 1.4; }
-
-  /* Footer */
-  #footer { background: linear-gradient(135deg, #f0f2f5 0%, #fafbfc 100%); text-align: center; padding: 100px 20px; }
-  .footer-card {
-    max-width: 580px; margin: 0 auto;
-    background: #ffffff; border: 1px solid rgba(255,140,30,0.2);
-    border-radius: 24px; padding: 48px 36px;
-  }
-  .footer-card h2 { font-size: 1.5rem; font-weight: 800; color: #1a2332; margin-bottom: 16px; line-height: 1.3; }
-  .footer-card h2 .gold { color: #e07820; }
-  .footer-card p { color: #5a6a7e; margin-bottom: 28px; font-size: 0.95rem; }
-  .footer-cta { display: inline-block; background: linear-gradient(135deg, #e07820, #f09030); color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 36px; border-radius: 50px; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 20px rgba(224,120,32,0.25); }
-  .footer-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(224,120,32,0.4); }
-  .footer-note { margin-top: 24px; font-size: 0.78rem; color: #aab4c0; }
-
-  @media (max-width: 640px) {
-    section { padding: 60px 14px; }
-    .hero { min-height: auto; padding: 80px 14px 100px; }
-    .hero-stats { gap: 10px; }
-    .hero-stat { padding: 14px 16px; min-width: 100px; }
-    .hero-stat .num { font-size: 1.4rem; }
-    .budget-bar-wrap { height: 36px; border-radius: 14px; }
-    .budget-bar-a, .budget-bar-b { font-size: 0.7rem; }
-    .result-card .big { font-size: 1.8rem; }
-    .usp-block { padding: 32px 24px; }
-    .footer-card { padding: 32px 24px; }
-  }
-
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
-<body>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+
+<main class="max-w-[1140px] mx-auto px-4 md:px-8">
 
 <!-- ═══════════ HERO ═══════════ -->
-<header class="hero">
-  <div class="hero-content">
-    <div class="hero-badge">📱 План продвижения в RuStore</div>
-    <h1>
-      <span class="gold">Все Горящие туры Отели</span><br>
-      <span class="white">800 новых пользователей за 2 месяца</span>
-    </h1>
-    <p class="hero-subtitle">
-      Таргетированная реклама ВКонтакте. Бюджет 50&nbsp;000&nbsp;₽.
-      Находим работающую аудиторию и масштабируем результат.
-    </p>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <span class="num">50 000 ₽</span>
-        <span class="label">Бюджет</span>
-      </div>
-      <div class="hero-stat">
-        <span class="num">3 сегмента</span>
-        <span class="label">Аудитории</span>
-      </div>
-      <div class="hero-stat">
-        <span class="num">600–800</span>
-        <span class="label">Установок</span>
-      </div>
-      <div class="hero-stat">
-        <span class="num">60–80 ₽</span>
-        <span class="label">Цена установки</span>
+<section class="pt-16 pb-16 md:pt-24 md:pb-24">
+  <div class="relative overflow-hidden rounded-3xl p-8 md:p-12 bg-primary-container text-on-primary">
+    <div class="relative z-10">
+      <span class="bg-gold-tint text-secondary-fixed-dim font-bold px-4 py-1 rounded-full text-caption mb-6 inline-block">📱 План продвижения в RuStore</span>
+      <h1 class="font-display-hero text-display-hero-mobile md:text-display-hero mb-4 leading-tight">Все Горящие туры Отели</h1>
+      <p class="font-body-lg text-body-lg text-on-primary-container max-w-2xl mb-10">
+        Таргетированная реклама ВКонтакте. Бюджет 50&nbsp;000&nbsp;₽. Три шага за 2 месяца: изучаем аудиторию → масштабируем лидеров → подводим итоги.
+      </p>
+      <div class="grid grid-cols-2 gap-4 md:gap-5 max-w-md md:max-w-lg mx-auto">
+        <div class="glass-card rounded-2xl flex flex-col items-center justify-center text-center overflow-hidden" style="padding: 20px 10px;">
+          <p class="font-label-caps text-on-secondary-container uppercase tracking-wider" style="font-size:10px; line-height:1.2; margin-bottom:8px;">Бюджет</p>
+          <span class="font-extrabold text-primary leading-none text-center" style="font-size:clamp(1.2rem, 4.5vw, 2rem);">50&thinsp;000&thinsp;₽</span>
+        </div>
+        <div class="glass-card rounded-2xl flex flex-col items-center justify-center text-center overflow-hidden" style="padding: 20px 10px;">
+          <p class="font-label-caps text-on-secondary-container uppercase tracking-wider" style="font-size:10px; line-height:1.2; margin-bottom:8px;">Сегменты</p>
+          <span class="font-extrabold text-primary leading-none text-center" style="font-size:clamp(1.2rem, 4.5vw, 2rem);">3</span>
+        </div>
+        <div class="glass-card rounded-2xl flex flex-col items-center justify-center text-center overflow-hidden" style="padding: 20px 10px;">
+          <p class="font-label-caps text-on-secondary-container uppercase tracking-wider" style="font-size:10px; line-height:1.2; margin-bottom:8px;">Установок</p>
+          <span class="font-extrabold text-primary leading-none text-center" style="font-size:clamp(1.2rem, 4.5vw, 2rem);">600–800</span>
+        </div>
+        <div class="glass-card rounded-2xl flex flex-col items-center justify-center text-center overflow-hidden" style="padding: 20px 10px;">
+          <p class="font-label-caps text-on-secondary-container uppercase tracking-wider" style="font-size:10px; line-height:1.2; margin-bottom:8px;">CPI</p>
+          <span class="font-extrabold text-primary leading-none text-center" style="font-size:clamp(1.2rem, 4.5vw, 2rem);">60–80&thinsp;₽</span>
+        </div>
       </div>
     </div>
   </div>
-  <div class="scroll-hint">
-    <span>Что внутри</span>
-    <div class="arrow"></div>
-  </div>
-</header>
+</section>
 
 <!-- ═══════════ WHY VK ═══════════ -->
-<section id="why">
-  <div class="section-inner">
-    <div class="section-tag reveal">Площадка</div>
-    <h2 class="section-title reveal">Почему ВКонтакте?</h2>
-    <p class="section-subtitle reveal">Главная социальная сеть России и лучшее место для поиска туристической аудитории.</p>
-    <div class="why-grid reveal">
-      <div class="why-card">
-        <span class="icon">👥</span>
-        <div class="num">93 млн</div>
-        <div class="label">пользователей в месяц</div>
-      </div>
-      <div class="why-card">
-        <span class="icon">✈️</span>
-        <div class="num">Топ-3</div>
-        <div class="label">категория контента — путешествия</div>
-      </div>
-      <div class="why-card">
-        <span class="icon">💰</span>
-        <div class="num">50–120 ₽</div>
-        <div class="label">средняя цена установки в travel</div>
-      </div>
-      <div class="why-card">
-        <span class="icon">📹</span>
-        <div class="num">×2,8</div>
-        <div class="label">выше CTR у видео против текста</div>
-      </div>
+<section class="pb-16 md:pb-24">
+  <div class="text-center mb-12">
+    <span class="bg-gold-tint text-secondary font-bold px-4 py-1 rounded-full text-caption mb-4 inline-block">Площадка</span>
+    <h2 class="font-headline-lg text-headline-lg text-primary">Почему ВКонтакте?</h2>
+    <p class="text-slate-grey mt-3">Главная социальная сеть России и лучшее место для поиска туристической аудитории.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
+    <div class="bg-surface-container-lowest border border-mist-grey p-6 md:p-8 rounded-3xl gold-gradient-top shadow-sm text-center">
+      <span class="text-4xl mb-4 block">👥</span>
+      <h4 class="font-headline-md text-headline-md mb-2 text-primary">93 млн</h4>
+      <p class="text-on-surface-variant font-body-md">пользователей в месяц</p>
+    </div>
+    <div class="bg-surface-container-lowest border border-mist-grey p-6 md:p-8 rounded-3xl gold-gradient-top shadow-sm text-center">
+      <span class="text-4xl mb-4 block">✈️</span>
+      <h4 class="font-headline-md text-headline-md mb-2 text-primary">Топ-3</h4>
+      <p class="text-on-surface-variant font-body-md">категория контента — путешествия</p>
+    </div>
+    <div class="bg-surface-container-lowest border border-mist-grey p-6 md:p-8 rounded-3xl gold-gradient-top shadow-sm text-center">
+      <span class="text-4xl mb-4 block">💰</span>
+      <h4 class="font-headline-md text-headline-md mb-2 text-primary">50–120 ₽</h4>
+      <p class="text-on-surface-variant font-body-md">средняя цена установки в travel</p>
+    </div>
+    <div class="bg-surface-container-lowest border border-mist-grey p-6 md:p-8 rounded-3xl gold-gradient-top shadow-sm text-center">
+      <span class="text-4xl mb-4 block">📹</span>
+      <h4 class="font-headline-md text-headline-md mb-2 text-primary">×2,8</h4>
+      <p class="text-on-surface-variant font-body-md">выше CTR у видео против текста</p>
     </div>
   </div>
 </section>
 
 <!-- ═══════════ USP ═══════════ -->
-<section id="usp">
-  <div class="section-inner">
-    <div class="section-tag reveal">Позиционирование</div>
-    <h2 class="section-title reveal">Чем мы отличаемся от конкурентов</h2>
-    <div class="usp-block reveal">
-      <p class="usp-quote">
-        «Мы <span class="gold">не туроператор</span>.<br>Мы сравниваем всех — и находим лучшую цену.»
-      </p>
-      <p class="usp-sub">
-        TEZ TOUR продаёт только свои туры. Pegas — только свои. Coral — только свои.<br>
-        А мы агрегируем 15+ туроператоров. Нам всё равно, у кого вы купите — мы просто находим, где дешевле.
-      </p>
-      <div class="usp-vs">
-        <div class="usp-vs-item"><div class="name">TEZ TOUR</div><div class="type">Туроператор</div></div>
-        <div class="usp-vs-item"><div class="name">Pegas</div><div class="type">Туроператор</div></div>
-        <div class="usp-vs-item"><div class="name">Coral Travel</div><div class="type">Туроператор</div></div>
-        <div class="usp-vs-item us"><div class="name">Мы ★</div><div class="type">Независимый агрегатор</div></div>
+<section class="pb-16 md:pb-24">
+  <div class="bg-primary rounded-3xl overflow-hidden flex flex-col md:flex-row">
+    <div class="md:w-1/2 p-8 md:p-12 bg-primary-container">
+      <h2 class="font-headline-lg text-headline-lg mb-4 text-white">Мы не туроператор</h2>
+      <p class="text-on-primary-container font-body-lg mb-8">Мы сравниваем всех — и находим лучшую цену. Нам всё равно, у кого вы купите.</p>
+      <ul class="space-y-4">
+        <li class="flex items-center gap-3"><span class="material-symbols-outlined text-success-green">check_circle</span><span class="text-on-primary">15+ туроператоров в одном приложении</span></li>
+        <li class="flex items-center gap-3"><span class="material-symbols-outlined text-success-green">check_circle</span><span class="text-on-primary">Сравнение цен за 2 минуты</span></li>
+        <li class="flex items-center gap-3"><span class="material-symbols-outlined text-success-green">check_circle</span><span class="text-on-primary">10 000+ скачиваний</span></li>
+      </ul>
+    </div>
+    <div class="md:w-1/2 p-8 md:p-12 bg-secondary-container text-on-secondary-container flex flex-col justify-center">
+      <h3 class="font-headline-md text-headline-md mb-6">Против конкурентов</h3>
+      <div class="space-y-3">
+        <div class="flex justify-between border-b border-on-secondary-container/20 pb-2"><span>TEZ TOUR</span><span class="font-bold">Туроператор</span></div>
+        <div class="flex justify-between border-b border-on-secondary-container/20 pb-2"><span>Pegas</span><span class="font-bold">Туроператор</span></div>
+        <div class="flex justify-between border-b border-on-secondary-container/20 pb-2"><span>Coral Travel</span><span class="font-bold">Туроператор</span></div>
+        <div class="flex justify-between pt-2"><span class="font-bold">Мы ★</span><span class="font-bold">Независимый агрегатор</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ BUDGET ═══════════ -->
-<section id="budget">
-  <div class="section-inner">
-    <div class="section-tag reveal">Бюджет</div>
-    <h2 class="section-title reveal">50 000 ₽ — три шага за 2 месяца</h2>
-    <p class="section-subtitle reveal">Изучаем аудиторию → масштабируем лидеров → подводим итоги.</p>
+<!-- ═══════════ BUDGET 3 STEPS ═══════════ -->
+<section class="pb-16 md:pb-24">
+  <div class="text-center mb-12">
+    <span class="bg-gold-tint text-secondary font-bold px-4 py-1 rounded-full text-caption mb-4 inline-block">Бюджет</span>
+    <h2 class="font-headline-lg text-headline-lg text-primary">50 000 ₽ — три шага за 2 месяца</h2>
+    <p class="text-slate-grey mt-3">Изучаем аудиторию → выбираем лидеров и усиливаем → подводим итоги.</p>
+  </div>
 
-    <div class="budget-bar-wrap reveal">
-      <div class="budget-bar-a">Шаг 1 — Изучение — 22 000 ₽</div>
-      <div class="budget-bar-b" style="width:44%; background: linear-gradient(135deg, #f0a040, #ffc278);">Шаг 2 — Масштаб — 22 000 ₽</div>
-      <div style="width:12%; background: #e8ecf0; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.78rem; color: #5a6a7e;">Шаг 3 — 6k</div>
-    </div>
-    <div class="budget-legend reveal">
-      <div class="budget-legend-item"><span class="budget-dot a"></span> Шаг 1 — Изучение (44%)</div>
-      <div class="budget-legend-item"><span class="budget-dot b"></span> Шаг 2 — Масштабирование (44%)</div>
-      <div class="budget-legend-item"><span class="budget-dot" style="background:#ccd0d6;"></span> Шаг 3 — Оценка (12%)</div>
-    </div>
+  <!-- Budget bar -->
+  <div class="flex rounded-2xl overflow-hidden h-12 mb-6 shadow-sm">
+    <div class="w-[42%] bg-secondary-container flex items-center justify-center font-bold text-sm text-on-secondary-container">Шаг 1 — 25 000 ₽</div>
+    <div class="w-[42%] bg-secondary-fixed-dim flex items-center justify-center font-bold text-sm text-primary">Шаг 2 — 25 000 ₽</div>
+    <div class="w-[16%] bg-mist-grey flex items-center justify-center font-bold text-sm text-slate-grey">Шаг 3 — 0 ₽</div>
+  </div>
+  <div class="flex justify-center gap-8 mb-10 text-sm font-semibold text-on-surface-variant">
+    <span><span class="inline-block w-3 h-3 rounded-full bg-secondary-container mr-2"></span>Изучение (50%)</span>
+    <span><span class="inline-block w-3 h-3 rounded-full bg-secondary-fixed-dim mr-2"></span>Масштабирование (50%)</span>
+    <span><span class="inline-block w-3 h-3 rounded-full bg-mist-grey mr-2"></span>Оценка</span>
+  </div>
 
-    <div class="budget-detail reveal">
-      <div class="budget-item">
-        <div class="amt">6 500 ₽</div>
-        <div class="lbl">Сегмент ① — Выгодные туры</div>
+  <!-- 3 Phase Timeline -->
+  <div class="relative">
+    <div class="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-1 bg-mist-grey hidden md:block"></div>
+    <div class="space-y-10">
+      <!-- Phase 1 -->
+      <div class="relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12">
+        <div class="md:w-1/2 md:text-right"><h4 class="font-headline-md text-headline-md text-primary">Изучение аудитории</h4><p class="text-on-surface-variant">Недели 1–2. Тест 3 сегментов, ретаргетинг, анализ.</p></div>
+        <div class="w-10 h-10 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-container font-bold z-10 shadow-lg text-sm">1</div>
+        <div class="md:w-1/2"><div class="bg-surface-container-low p-5 rounded-2xl border border-mist-grey"><p class="text-label-caps text-secondary font-bold">Выделено</p><p class="text-headline-md font-bold text-primary">25 000 ₽</p></div></div>
       </div>
-      <div class="budget-item">
-        <div class="amt">6 500 ₽</div>
-        <div class="lbl">Сегмент ② — Семейный отдых</div>
+      <!-- Phase 2 -->
+      <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center gap-6 md:gap-12">
+        <div class="md:w-1/2 md:text-left"><h4 class="font-headline-md text-headline-md text-primary">Масштабирование</h4><p class="text-on-surface-variant">Недели 3–6. Выбор лидеров, ротация, Lookalike.</p></div>
+        <div class="w-10 h-10 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-container font-bold z-10 shadow-lg text-sm">2</div>
+        <div class="md:w-1/2 md:text-right"><div class="bg-surface-container-low p-5 rounded-2xl border border-mist-grey"><p class="text-label-caps text-secondary font-bold">Выделено</p><p class="text-headline-md font-bold text-primary">25 000 ₽</p></div></div>
       </div>
-      <div class="budget-item">
-        <div class="amt">6 000 ₽</div>
-        <div class="lbl">Сегмент ③ — Внутренний туризм</div>
-      </div>
-      <div class="budget-item">
-        <div class="amt">3 000 ₽</div>
-        <div class="lbl">Ретаргетинг</div>
+      <!-- Phase 3 -->
+      <div class="relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12">
+        <div class="md:w-1/2 md:text-right"><h4 class="font-headline-md text-headline-md text-primary">Финальная оценка</h4><p class="text-on-surface-variant">Недели 7–8. Замеры, retention, итоговый отчёт.</p></div>
+        <div class="w-10 h-10 bg-slate-grey rounded-full flex items-center justify-center text-white font-bold z-10 shadow-lg text-sm">3</div>
+        <div class="md:w-1/2"><div class="bg-surface-container-low p-5 rounded-2xl border border-mist-grey"><p class="text-label-caps text-slate-grey font-bold">Без бюджета</p><p class="text-headline-md font-bold text-slate-grey">Аналитика</p></div></div>
       </div>
     </div>
   </div>
+
+  <!-- Budget detail cards -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-10">
+    <div class="bg-surface-container-lowest border border-mist-grey rounded-xl p-4"><p class="font-bold text-secondary text-lg">7 500 ₽</p><p class="text-slate-grey text-xs mt-1">Сегмент ① — Выгодные туры</p></div>
+    <div class="bg-surface-container-lowest border border-mist-grey rounded-xl p-4"><p class="font-bold text-secondary text-lg">7 500 ₽</p><p class="text-slate-grey text-xs mt-1">Сегмент ② — Семейный отдых</p></div>
+    <div class="bg-surface-container-lowest border border-mist-grey rounded-xl p-4"><p class="font-bold text-secondary text-lg">7 000 ₽</p><p class="text-slate-grey text-xs mt-1">Сегмент ③ — Внутренний туризм</p></div>
+    <div class="bg-surface-container-lowest border border-mist-grey rounded-xl p-4"><p class="font-bold text-secondary text-lg">3 000 ₽</p><p class="text-slate-grey text-xs mt-1">Ретаргетинг</p></div>
+  </div>
 </section>
 
-<!-- ═══════════ SEGMENTS ═══════════ -->
-<section id="segments">
-  <div class="section-inner">
-    <div class="section-tag reveal">Аудитория</div>
-    <h2 class="section-title reveal">3 сегмента — чёткий тест без распыления</h2>
-    <p class="section-subtitle reveal">Каждая группа исключает аудитории двух других — бюджет не дублируется на одного человека.</p>
-
-    <div class="segments-grid reveal">
-      <div class="segment-card">
-        <span class="emoji">🔥</span>
-        <h3>Выгодные туры</h3>
-        <p class="quote">«Переплачиваешь до 30%? Сравни 15 туроператоров за 2 минуты»</p>
-        <p class="who">25–40 лет, ищут скидки, средний доход и ниже. Осеннее бронирование — как вариация креатива.</p>
-      </div>
-      <div class="segment-card">
-        <span class="emoji">👨‍👩‍👧‍👦</span>
-        <h3>Семейный отдых</h3>
-        <p class="quote">«Идеальный отель для семьи за 2 минуты — все операторы в одном приложении»</p>
-        <p class="who">30–50 лет, семьи с детьми, доход средний и выше</p>
-      </div>
-      <div class="segment-card">
-        <span class="emoji">🏔️</span>
-        <h3>Отдых в России</h3>
-        <p class="quote">«Алтай, Дагестан, Карелия — туры от 15 000 ₽. Сравни цены всех операторов»</p>
-        <p class="who">30–55 лет, внутренний туризм, средний доход</p>
-      </div>
+<!-- ═══════════ AUDIENCE SEGMENTS ═══════════ -->
+<section class="pb-16 md:pb-24">
+  <div class="text-center mb-12">
+    <span class="bg-gold-tint text-secondary font-bold px-4 py-1 rounded-full text-caption mb-4 inline-block">Шаг 1</span>
+    <h2 class="font-headline-lg text-headline-lg text-primary">3 сегмента — чёткий тест без распыления</h2>
+    <p class="text-slate-grey mt-3 max-w-2xl mx-auto">Каждая группа исключает аудитории двух других — бюджет не дублируется на одного человека.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="bg-white rounded-3xl p-8 border border-mist-grey flex flex-col h-full shadow-sm hover:shadow-md transition-all gold-gradient-top">
+      <span class="text-4xl mb-4">🔥</span>
+      <span class="bg-gold-tint text-secondary font-bold px-3 py-1 rounded text-caption mb-4 w-fit">DEALS</span>
+      <h3 class="font-headline-md text-headline-md text-primary mb-4">Выгодные туры</h3>
+      <p class="text-on-surface-variant font-body-md italic mb-6">«Переплачиваешь до 30%? Сравни 15 туроператоров за 2 минуты»</p>
+      <p class="text-slate-grey text-caption mt-auto">25–40 лет, ищут скидки. Осеннее бронирование — как вариация креатива.</p>
     </div>
-
+    <div class="bg-white rounded-3xl p-8 border border-mist-grey flex flex-col h-full shadow-sm hover:shadow-md transition-all gold-gradient-top">
+      <span class="text-4xl mb-4">👨‍👩‍👧‍👦</span>
+      <span class="bg-gold-tint text-secondary font-bold px-3 py-1 rounded text-caption mb-4 w-fit">FAMILY</span>
+      <h3 class="font-headline-md text-headline-md text-primary mb-4">Семейный отдых</h3>
+      <p class="text-on-surface-variant font-body-md italic mb-6">«Идеальный отель для семьи за 2 минуты — все операторы в одном приложении»</p>
+      <p class="text-slate-grey text-caption mt-auto">30–50 лет, семьи с детьми, доход средний и выше.</p>
+    </div>
+    <div class="bg-white rounded-3xl p-8 border border-mist-grey flex flex-col h-full shadow-sm hover:shadow-md transition-all gold-gradient-top">
+      <span class="text-4xl mb-4">🏔️</span>
+      <span class="bg-gold-tint text-secondary font-bold px-3 py-1 rounded text-caption mb-4 w-fit">DOMESTIC</span>
+      <h3 class="font-headline-md text-headline-md text-primary mb-4">Отдых в России</h3>
+      <p class="text-on-surface-variant font-body-md italic mb-6">«Алтай, Дагестан, Карелия — туры от 15 000 ₽. Сравни цены всех операторов»</p>
+      <p class="text-slate-grey text-caption mt-auto">30–55 лет, внутренний туризм, средний доход.</p>
+    </div>
   </div>
 </section>
 
 <!-- ═══════════ GEO ═══════════ -->
-<section id="geo">
-  <div class="section-inner">
-    <div class="section-tag reveal">География</div>
-    <h2 class="section-title reveal">Стартуем с регионов — масштабируемся на Москву</h2>
-    <p class="section-subtitle reveal">В регионах цена установки на 30–40% ниже. Сначала находим работающую связку на дешёвой аудитории — потом завоёвываем столицы.</p>
-
-    <div class="geo-grid reveal">
-      <div class="geo-card">
-        <span class="tier t2">Приоритет</span>
-        <div class="pct">45%</div>
-        <div class="cities">Казань, Екатеринбург, Новосибирск, Краснодар, Ростов-на-Дону</div>
+<section class="pb-16 md:pb-24">
+  <div class="bg-surface-container rounded-3xl flex flex-col md:flex-row overflow-hidden">
+    <div class="md:w-1/2 p-8 md:p-12">
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Стартуем с регионов</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mb-8">В регионах цена установки на 30–40% ниже. Сначала находим работающую связку — потом завоёвываем столицы.</p>
+      <div class="space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="p-2 bg-gold-tint rounded-lg text-secondary font-bold w-10 h-10 flex items-center justify-center text-sm">45%</div>
+          <div><h5 class="font-bold text-primary">Приоритет</h5><p class="text-on-surface-variant text-sm">Казань, Екатеринбург, Новосибирск, Краснодар, Ростов-на-Дону</p></div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="p-2 bg-primary-container rounded-lg text-on-primary font-bold w-10 h-10 flex items-center justify-center text-sm">30%</div>
+          <div><h5 class="font-bold text-primary">Столицы</h5><p class="text-on-surface-variant text-sm">Москва и МО, Санкт-Петербург и ЛО</p></div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="p-2 bg-mist-grey rounded-lg text-slate-grey font-bold w-10 h-10 flex items-center justify-center text-sm">25%</div>
+          <div><h5 class="font-bold text-primary">Охват</h5><p class="text-on-surface-variant text-sm">Уфа, Самара, Нижний Новгород, Красноярск, Владивосток, Калининград</p></div>
+        </div>
       </div>
-      <div class="geo-card">
-        <span class="tier t1">Столицы</span>
-        <div class="pct">30%</div>
-        <div class="cities">Москва и Московская область, Санкт-Петербург и Ленобласть</div>
-      </div>
-      <div class="geo-card">
-        <span class="tier t3">Охват</span>
-        <div class="pct">25%</div>
-        <div class="cities">Уфа, Самара, Нижний Новгород, Красноярск, Владивосток, Калининград</div>
+    </div>
+    <div class="md:w-1/2 p-8 md:p-12 bg-primary-container flex flex-col justify-center">
+      <h3 class="font-headline-md text-headline-md text-on-primary mb-6">CPI по регионам</h3>
+      <div class="space-y-4">
+        <div class="bg-surface/10 p-4 rounded-xl flex items-center justify-between"><span class="text-on-primary">В среднем</span><span class="text-secondary-fixed-dim font-bold text-xl">60–80 ₽</span></div>
+        <div class="bg-surface/10 p-4 rounded-xl flex items-center justify-between"><span class="text-on-primary">Регионы</span><span class="text-success-green font-bold text-xl">40–60 ₽</span></div>
+        <div class="bg-surface/10 p-4 rounded-xl flex items-center justify-between"><span class="text-on-primary">Москва / СПб</span><span class="text-secondary-fixed-dim font-bold text-xl">70–90 ₽</span></div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ═══════════ SCALING SCENARIOS ═══════════ -->
+<section class="pb-16 md:pb-24">
+  <div class="text-center mb-12">
+    <span class="bg-gold-tint text-secondary font-bold px-4 py-1 rounded-full text-caption mb-4 inline-block">Шаг 2</span>
+    <h2 class="font-headline-lg text-headline-lg text-primary">Масштабирование — недели 3–6 (25 000 ₽)</h2>
+    <p class="text-slate-grey mt-3 max-w-2xl mx-auto">Выбираем лучшие группы по итогам теста и перераспределяем бюджет по одному из трёх сценариев.</p>
+  </div>
 
-<!-- ═══════════ SCALING ═══════════ -->
-<section id="scaling">
-  <div class="section-inner">
-    <div class="section-tag reveal">Шаг 2</div>
-    <h2 class="section-title reveal">Масштабирование — недели 3–6 (22 000 ₽)</h2>
-    <p class="section-subtitle reveal">Выбираем лучшие группы по итогам теста и перераспределяем бюджет.</p>
-
-    <div class="phase-cards reveal">
-
-      <div class="phase-card">
-        <div class="phase-num" style="background: linear-gradient(135deg, #e07820, #f09030); color: #fff;">A</div>
-        <div class="phase-body">
-          <h3>Один явный лидер</h3>
-          <div class="phase-budget" style="font-size:0.85rem; color:#e07820; font-weight:600; margin-bottom:12px;">Разрыв по CPI > 25%</div>
-          <div class="budget-detail" style="grid-template-columns:1fr 1fr 1fr;">
-            <div class="budget-item"><div class="amt" style="font-size:1.1rem;">70%</div><div class="lbl">Группа-лидер</div></div>
-            <div class="budget-item"><div class="amt" style="font-size:1.1rem;">20%</div><div class="lbl">Ретаргетинг</div></div>
-            <div class="budget-item"><div class="amt" style="font-size:1.1rem;">10%</div><div class="lbl">Вторая группа</div></div>
-          </div>
-        </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Scenario A -->
+    <div class="bg-white rounded-3xl p-8 border border-mist-grey flex flex-col shadow-sm hover:shadow-md transition-all gold-gradient-top">
+      <div class="w-12 h-12 bg-secondary-container rounded-2xl flex items-center justify-center text-on-secondary font-bold text-lg mb-5">A</div>
+      <h3 class="font-headline-md text-headline-md text-primary mb-2">Один явный лидер</h3>
+      <p class="text-label-caps text-secondary font-bold mb-5">Разрыв по CPI > 25%</p>
+      <div class="space-y-3 mt-auto">
+        <div class="bg-surface-container-low p-3 rounded-xl flex justify-between"><span class="text-sm">Группа-лидер</span><span class="font-bold text-secondary">70%</span></div>
+        <div class="bg-surface-container-low p-3 rounded-xl flex justify-between"><span class="text-sm">Ретаргетинг</span><span class="font-bold">20%</span></div>
+        <div class="bg-surface-container-low p-3 rounded-xl flex justify-between"><span class="text-sm">Вторая группа</span><span class="font-bold">10%</span></div>
       </div>
-
-      <div class="phase-card">
-        <div class="phase-num" style="background: linear-gradient(135deg, #f0a040, #ffc278); color: #3d2000;">B</div>
-        <div class="phase-body">
-          <h3>Два лидера с близкими результатами</h3>
-          <div class="phase-budget" style="font-size:0.85rem; color:#e07820; font-weight:600; margin-bottom:12px;">Разрыв по CPI < 25%</div>
-          <div class="budget-detail" style="grid-template-columns:1fr 1fr 1fr;">
-            <div class="budget-item"><div class="amt" style="font-size:1.1rem;">40%</div><div class="lbl">Лидер 1</div></div>
-            <div class="budget-item"><div class="amt" style="font-size:1.1rem;">35%</div><div class="lbl">Лидер 2</div></div>
-            <div class="budget-item"><div class="amt" style="font-size:1.1rem;">25%</div><div class="lbl">Ретаргетинг</div></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="phase-card">
-        <div class="phase-num" style="background: #e8ecf0; color: #5a6a7e;">C</div>
-        <div class="phase-body">
-          <h3>Все три отстают</h3>
-          <div class="phase-budget" style="font-size:0.85rem; color:#c04030; font-weight:600; margin-bottom:12px;">CPI > 80 у всех групп</div>
-          <p>Останавливаем кампанию. Анализируем причины. Перезапускаем с новыми креативами и скорректированным УТП. Оставшийся бюджет (28&nbsp;000&nbsp;₽) — на вторую попытку.</p>
-        </div>
-      </div>
-
     </div>
+    <!-- Scenario B -->
+    <div class="bg-white rounded-3xl p-8 border border-mist-grey flex flex-col shadow-sm hover:shadow-md transition-all gold-gradient-top">
+      <div class="w-12 h-12 bg-secondary-fixed-dim rounded-2xl flex items-center justify-center text-primary font-bold text-lg mb-5">B</div>
+      <h3 class="font-headline-md text-headline-md text-primary mb-2">Два лидера</h3>
+      <p class="text-label-caps text-secondary font-bold mb-5">Разрыв по CPI < 25%</p>
+      <div class="space-y-3 mt-auto">
+        <div class="bg-surface-container-low p-3 rounded-xl flex justify-between"><span class="text-sm">Лидер 1</span><span class="font-bold text-secondary">40%</span></div>
+        <div class="bg-surface-container-low p-3 rounded-xl flex justify-between"><span class="text-sm">Лидер 2</span><span class="font-bold">35%</span></div>
+        <div class="bg-surface-container-low p-3 rounded-xl flex justify-between"><span class="text-sm">Ретаргетинг</span><span class="font-bold">25%</span></div>
+      </div>
+    </div>
+    <!-- Scenario C -->
+    <div class="bg-white rounded-3xl p-8 border border-mist-grey flex flex-col shadow-sm hover:shadow-md transition-all" style="border-top: 3px solid #c04030;">
+      <div class="w-12 h-12 bg-error-container rounded-2xl flex items-center justify-center text-on-error-container font-bold text-lg mb-5">C</div>
+      <h3 class="font-headline-md text-headline-md text-primary mb-2">Все три отстают</h3>
+      <p class="text-label-caps text-alert-red font-bold mb-5">CPI > 80 у всех групп</p>
+      <p class="text-on-surface-variant text-sm mt-auto">Останавливаем кампанию. Анализируем причины. Перезапускаем с новыми креативами и скорректированным УТП.</p>
+    </div>
+  </div>
 
-    <div class="safety-grid reveal" style="margin-top:32px;">
-      <div class="safety-card">
-        <span class="icon">🔄</span>
-        <h3>Ротация креативов</h3>
-        <p>Обновление каждые 10–14 дней</p>
-      </div>
-      <div class="safety-card">
-        <span class="icon">👥</span>
-        <h3>Lookalike-аудитория</h3>
-        <p>VK находит похожих на установивших — +15–30% к конверсии</p>
-      </div>
-      <div class="safety-card">
-        <span class="icon">🎯</span>
-        <h3>Усиление ретаргетинга</h3>
-        <p>Аудитория кликнувших-но-не-скачавших растёт → увеличиваем бюджет</p>
-      </div>
-      <div class="safety-card">
-        <span class="icon">📍</span>
-        <h3>Гео-оптимизация</h3>
-        <p>Регионы с CPI 40–50 ₽ получают приоритет над Москвой</p>
-      </div>
+  <!-- What we do during scaling -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+    <div class="bg-surface-container-lowest border border-mist-grey rounded-2xl p-5 text-center">
+      <span class="text-2xl block mb-2">🔄</span>
+      <h4 class="font-bold text-primary text-sm mb-1">Ротация креативов</h4>
+      <p class="text-slate-grey text-xs">Обновление каждые 10–14 дней</p>
+    </div>
+    <div class="bg-surface-container-lowest border border-mist-grey rounded-2xl p-5 text-center">
+      <span class="text-2xl block mb-2">👥</span>
+      <h4 class="font-bold text-primary text-sm mb-1">Lookalike-аудитория</h4>
+      <p class="text-slate-grey text-xs">+15–30% к конверсии</p>
+    </div>
+    <div class="bg-surface-container-lowest border border-mist-grey rounded-2xl p-5 text-center">
+      <span class="text-2xl block mb-2">🎯</span>
+      <h4 class="font-bold text-primary text-sm mb-1">Усиление ретаргетинга</h4>
+      <p class="text-slate-grey text-xs">Дожимаем колеблющихся</p>
+    </div>
+    <div class="bg-surface-container-lowest border border-mist-grey rounded-2xl p-5 text-center">
+      <span class="text-2xl block mb-2">📍</span>
+      <h4 class="font-bold text-primary text-sm mb-1">Гео-оптимизация</h4>
+      <p class="text-slate-grey text-xs">Регионы с CPI 40–50 ₽ в приоритете</p>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ FINAL ═══════════ -->
-<section id="final">
-  <div class="section-inner">
-    <div class="section-tag reveal">Шаг 3</div>
-    <h2 class="section-title reveal">Финальная оценка — недели 7–8 (6 000 ₽)</h2>
-    <p class="section-subtitle reveal">Прекращаем масштабирование. Замеряем результаты. Готовим итоговый отчёт.</p>
-
-    <div class="checklist-items reveal">
-      <div class="check-item">
-        <div class="box"></div>
-        <div class="text"><strong>Сколько всего установок?</strong> — итоговая цифра в RuStore Консоли за 2 месяца</div>
+<!-- ═══════════ FINAL EVALUATION ═══════════ -->
+<section class="pb-16 md:pb-24">
+  <div class="bg-surface-container-lowest border border-mist-grey rounded-3xl p-8 md:p-12">
+    <div class="text-center mb-10">
+      <span class="bg-gold-tint text-secondary font-bold px-4 py-1 rounded-full text-caption mb-4 inline-block">Шаг 3</span>
+      <h2 class="font-headline-lg text-headline-lg text-primary">Финальная оценка — недели 7–8</h2>
+      <p class="text-slate-grey mt-3">Без рекламного бюджета. Прекращаем масштабирование, замеряем результаты, готовим итоговый отчёт.</p>
+    </div>
+    <div class="space-y-4 max-w-2xl mx-auto">
+      <div class="flex items-start gap-4 bg-surface-container-low p-4 rounded-xl">
+        <span class="material-symbols-outlined text-success-green mt-0.5">check_box_outline_blank</span>
+        <div><strong class="text-primary">Сколько всего установок?</strong><p class="text-slate-grey text-sm">Итоговая цифра в RuStore Консоли за 2 месяца</p></div>
       </div>
-      <div class="check-item">
-        <div class="box"></div>
-        <div class="text"><strong>Какая группа — чемпион?</strong> — сравниваем CPI и объём по всем трём</div>
+      <div class="flex items-start gap-4 bg-surface-container-low p-4 rounded-xl">
+        <span class="material-symbols-outlined text-success-green mt-0.5">check_box_outline_blank</span>
+        <div><strong class="text-primary">Какая группа — чемпион?</strong><p class="text-slate-grey text-sm">Сравниваем CPI и объём по всем трём</p></div>
       </div>
-      <div class="check-item">
-        <div class="box"></div>
-        <div class="text"><strong>Какая цена установки?</strong> — общий CPI, по регионам, по Москве</div>
+      <div class="flex items-start gap-4 bg-surface-container-low p-4 rounded-xl">
+        <span class="material-symbols-outlined text-success-green mt-0.5">check_box_outline_blank</span>
+        <div><strong class="text-primary">Какая цена установки?</strong><p class="text-slate-grey text-sm">Общий CPI, по регионам, по Москве</p></div>
       </div>
-      <div class="check-item">
-        <div class="box"></div>
-        <div class="text"><strong>Пользователи остаются?</strong> — открытия на 1-й и 7-й день (AppMetrica)</div>
+      <div class="flex items-start gap-4 bg-surface-container-low p-4 rounded-xl">
+        <span class="material-symbols-outlined text-success-green mt-0.5">check_box_outline_blank</span>
+        <div><strong class="text-primary">Пользователи остаются?</strong><p class="text-slate-grey text-sm">Открытия на 1-й и 7-й день (AppMetrica)</p></div>
       </div>
-      <div class="check-item">
-        <div class="box"></div>
-        <div class="text"><strong>Какой формат лучший?</strong> — видео vs карусель vs баннер по CTR и конверсии</div>
+      <div class="flex items-start gap-4 bg-surface-container-low p-4 rounded-xl">
+        <span class="material-symbols-outlined text-success-green mt-0.5">check_box_outline_blank</span>
+        <div><strong class="text-primary">Какой формат лучший?</strong><p class="text-slate-grey text-sm">Видео vs карусель vs баннер по CTR и конверсии</p></div>
       </div>
     </div>
-
-    <div class="why-3-note reveal" style="margin-top:28px;">
-      <strong>Что получает заказчик:</strong> итоговый отчёт — цифры, победители, выводы и готовый план расширения на следующий месяц.
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ CPI BREAKDOWN ═══════════ -->
-<section id="cpi">
-  <div class="section-inner">
-    <div class="section-tag reveal">Стоимость установки</div>
-    <h2 class="section-title reveal">CPI: реалистичный прогноз по регионам</h2>
-    <p class="section-subtitle reveal">В регионах — дешевле, в Москве — дороже. Усреднённый прогноз — консервативный.</p>
-
-    <div class="cpi-grid reveal">
-      <div class="cpi-card">
-        <div class="big">60–80 ₽</div>
-        <div class="label">В среднем по всем городам</div>
-      </div>
-      <div class="cpi-card good">
-        <div class="big">40–60 ₽</div>
-        <div class="label">Регионы: Казань, Екатеринбург, Новосибирск</div>
-      </div>
-      <div class="cpi-card">
-        <div class="big">70–90 ₽</div>
-        <div class="label">Москва и Санкт-Петербург</div>
-      </div>
+    <div class="text-center mt-8 bg-gold-tint rounded-xl p-4">
+      <strong class="text-secondary">Итоговый отчёт:</strong> <span class="text-on-surface-variant">цифры, победители, выводы и готовый план расширения на следующий месяц.</span>
     </div>
   </div>
 </section>
 
 <!-- ═══════════ SAFETY ═══════════ -->
-<section id="safety">
-  <div class="section-inner">
-    <div class="section-tag reveal">Защита бюджета</div>
-    <h2 class="section-title reveal">Как не сольём деньги</h2>
-
-    <div class="safety-grid reveal">
-      <div class="safety-card">
-        <span class="icon">🛑</span>
-        <h3>Стоп-сигнал на 5-й день</h3>
-        <p>CPI > 100 ₽ → отключаем сегмент немедленно, не ждём 2 недели.</p>
-      </div>
-      <div class="safety-card">
-        <span class="icon">🔄</span>
-        <h3>Ротация креативов</h3>
-        <p>Замена на 10-й день. Далее каждые 10–14 дней — против выгорания аудитории.</p>
-      </div>
-      <div class="safety-card">
-        <span class="icon">🚫</span>
-        <h3>Кросс-исключения</h3>
-        <p>Каждая группа исключает аудитории двух других. Один человек не видит рекламу из трёх групп.</p>
-      </div>
-      <div class="safety-card">
-        <span class="icon">🎯</span>
-        <h3>Ретаргетинг с 1-й недели</h3>
-        <p>После 300+ кликов — дожимаем баннером. Самые дешёвые установки.</p>
-      </div>
+<section class="pb-16 md:pb-24">
+  <h2 class="font-headline-lg text-headline-lg text-primary mb-10 text-center">Как защищаем бюджет</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="bg-surface-container-lowest border border-mist-grey rounded-2xl p-6 flex gap-4">
+      <span class="text-3xl flex-shrink-0">🛑</span>
+      <div><h4 class="font-bold text-primary mb-1">Стоп-сигнал на 5-й день</h4><p class="text-slate-grey text-sm">CPI > 100 ₽ → отключаем сегмент немедленно, не ждём 2 недели.</p></div>
+    </div>
+    <div class="bg-surface-container-lowest border border-mist-grey rounded-2xl p-6 flex gap-4">
+      <span class="text-3xl flex-shrink-0">🔄</span>
+      <div><h4 class="font-bold text-primary mb-1">Ротация креативов</h4><p class="text-slate-grey text-sm">Замена на 10-й день. Далее каждые 10–14 дней.</p></div>
+    </div>
+    <div class="bg-surface-container-lowest border border-mist-grey rounded-2xl p-6 flex gap-4">
+      <span class="text-3xl flex-shrink-0">🚫</span>
+      <div><h4 class="font-bold text-primary mb-1">Кросс-исключения</h4><p class="text-slate-grey text-sm">Каждая группа исключает аудитории двух других. Нет дублирования.</p></div>
+    </div>
+    <div class="bg-surface-container-lowest border border-mist-grey rounded-2xl p-6 flex gap-4">
+      <span class="text-3xl flex-shrink-0">🎯</span>
+      <div><h4 class="font-bold text-primary mb-1">Ретаргетинг с 1-й недели</h4><p class="text-slate-grey text-sm">После 300+ кликов — дожимаем баннером. Самые дешёвые установки.</p></div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════ RESULTS ═══════════ -->
-<section id="results">
-  <div class="section-inner">
-    <div class="section-tag reveal">Прогноз</div>
-    <h2 class="section-title reveal">Что получим за 50 000 ₽</h2>
-    <p class="section-subtitle reveal">Консервативная оценка. При успешном тесте в регионах — показатели будут выше.</p>
-
-    <div class="results-grid reveal">
-      <div class="result-card">
-        <span class="big">150–200K</span>
-        <span class="label">увидят рекламу</span>
-      </div>
-      <div class="result-card">
-        <span class="big">1,5–3K</span>
-        <span class="label">перейдут по рекламе</span>
-      </div>
-      <div class="result-card">
-        <span class="big">600–800</span>
-        <span class="label">скачают приложение</span>
-      </div>
-      <div class="result-card">
-        <span class="big">60–80 ₽</span>
-        <span class="label">средняя цена установки</span>
+<section class="pb-16 md:pb-24">
+  <div class="bg-gold-tint border border-secondary/20 rounded-[40px] p-8 md:p-12 text-center relative overflow-hidden">
+    <div class="relative z-10">
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-10">Что получим за 50 000 ₽</h2>
+      <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
+        <div><p class="text-label-caps text-secondary font-bold mb-2 uppercase">Охват</p><h3 class="font-display-hero text-display-hero-mobile text-primary">150–200K</h3></div>
+        <div class="w-px h-20 bg-secondary/20 hidden md:block"></div>
+        <div><p class="text-label-caps text-secondary font-bold mb-2 uppercase">Кликов</p><h3 class="font-display-hero text-display-hero-mobile text-primary">1,5–3K</h3></div>
+        <div class="w-px h-20 bg-secondary/20 hidden md:block"></div>
+        <div><p class="text-label-caps text-secondary font-bold mb-2 uppercase">Установок</p><h3 class="font-display-hero text-display-hero-mobile text-primary">600–800</h3></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ WARNING ═══════════ -->
-<section id="warning">
-  <div class="section-inner">
-    <div class="section-tag reveal">Критично</div>
-    <h2 class="section-title reveal">Что будет, если не починить «белый экран»</h2>
-
-    <div class="warning-box reveal">
-      <span class="warn-icon">⚠️</span>
-      <h3>Самый свежий отзыв в RuStore — 29 июня 2026:</h3>
-      <p style="color:#1a2332; font-style:italic; margin-bottom:16px;">«Просто белая страница, ни туда, ни сюда. Сношу эту дрянь» — Анфиса</p>
-      <p>
-        Это не просто плохой отзыв. Это прямые потери бюджета: мы платим за каждый клик по рекламе. Если человек кликает, видит белый экран и закрывает приложение — мы заплатили за клик, но не получили установку. При цене установки 60–80&nbsp;₽ <strong style="color:#c04030">первые 5&nbsp;000–10&nbsp;000&nbsp;₽ рекламного бюджета уйдут впустую</strong>. Баг должен быть исправлен до запуска рекламы.
+<!-- ═══════════ WHITE SCREEN WARNING ═══════════ -->
+<section class="pb-16 md:pb-24">
+  <div class="bg-error-container border-2 border-error p-6 md:p-8 rounded-3xl flex items-start gap-5">
+    <span class="material-symbols-outlined text-error text-4xl flex-shrink-0">warning</span>
+    <div>
+      <h4 class="font-headline-md text-headline-md text-on-error-container mb-2">Самый свежий отзыв в RuStore — 29 июня 2026:</h4>
+      <p class="text-on-error-container/80 italic mb-4">«Просто белая страница, ни туда, ни сюда. Сношу эту дрянь» — Анфиса</p>
+      <p class="text-on-error-container font-body-md">
+        Это не просто плохой отзыв. Это прямые потери бюджета: мы платим за каждый клик по рекламе. Если человек кликает, видит белый экран и закрывает приложение — мы заплатили за клик, но не получили установку. При цене 60–80&nbsp;₽ <strong>первые 5&nbsp;000–10&nbsp;000&nbsp;₽ уйдут впустую</strong>. Баг должен быть исправлен до запуска.
       </p>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ EXPANSION ═══════════ -->
-<section id="expansion">
-  <div class="section-inner">
-    <div class="section-tag reveal">Что дальше</div>
-    <h2 class="section-title reveal">Этап 2: план расширения</h2>
-    <p class="section-subtitle reveal">После успешного теста — масштабируемся. Бюджет от 150 000 ₽/мес.</p>
-
-    <div class="exp-timeline reveal">
-      <div class="exp-card">
-        <div class="exp-step">2A</div>
-        <h3>Лендинг</h3>
-        <p>Одностраничный сайт для прогрева перед RuStore и сбора аудитории</p>
-      </div>
-      <div class="exp-card">
-        <div class="exp-step">2B</div>
-        <h3>Яндекс.Директ</h3>
-        <p>Поисковая реклама — ловим горячий спрос по ключевым запросам</p>
-      </div>
-      <div class="exp-card">
-        <div class="exp-step">2C</div>
-        <h3>VK Сообщество</h3>
-        <p>Группа с контентом: подборки туров, лайфхаки, UGC</p>
-      </div>
-      <div class="exp-card">
-        <div class="exp-step">2D</div>
-        <h3>Блогеры</h3>
-        <p>Посевы у travel-блогеров — конверсия в 3× выше прямой рекламы</p>
-      </div>
+<!-- ═══════════ EXPANSION PLAN ═══════════ -->
+<section class="pb-16 md:pb-24">
+  <div class="text-center mb-12">
+    <span class="bg-gold-tint text-secondary font-bold px-4 py-1 rounded-full text-caption mb-4 inline-block">Что дальше</span>
+    <h2 class="font-headline-lg text-headline-lg text-primary">Этап 2: план расширения</h2>
+    <p class="text-slate-grey mt-3">После успешного теста — масштабируемся. Бюджет от 150 000 ₽/мес.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div class="bg-white rounded-2xl p-6 border border-mist-grey text-center shadow-sm">
+      <span class="text-label-caps text-secondary font-bold">2A</span>
+      <h4 class="font-bold text-primary mt-2 mb-2">Лендинг</h4>
+      <p class="text-slate-grey text-sm">Одностраничный сайт для прогрева перед RuStore и сбора аудитории</p>
+    </div>
+    <div class="bg-white rounded-2xl p-6 border border-mist-grey text-center shadow-sm">
+      <span class="text-label-caps text-secondary font-bold">2B</span>
+      <h4 class="font-bold text-primary mt-2 mb-2">Яндекс.Директ</h4>
+      <p class="text-slate-grey text-sm">Поисковая реклама — ловим горячий спрос по ключевым запросам</p>
+    </div>
+    <div class="bg-white rounded-2xl p-6 border border-mist-grey text-center shadow-sm">
+      <span class="text-label-caps text-secondary font-bold">2C</span>
+      <h4 class="font-bold text-primary mt-2 mb-2">VK Сообщество</h4>
+      <p class="text-slate-grey text-sm">Группа с контентом: подборки туров, лайфхаки, UGC</p>
+    </div>
+    <div class="bg-white rounded-2xl p-6 border border-mist-grey text-center shadow-sm">
+      <span class="text-label-caps text-secondary font-bold">2D</span>
+      <h4 class="font-bold text-primary mt-2 mb-2">Блогеры</h4>
+      <p class="text-slate-grey text-sm">Посевы у travel-блогеров — конверсия в 3× выше</p>
     </div>
   </div>
 </section>
 
 <!-- ═══════════ CHECKLIST ═══════════ -->
-<section id="checklist">
-  <div class="section-inner">
-    <div class="section-tag reveal">До запуска</div>
-    <h2 class="section-title reveal">Что нужно сделать перед стартом</h2>
-
-    <div class="checklist-items reveal">
-      <div class="check-item">
-        <div class="box"></div>
-        <div class="text"><strong>Починить «белый экран»</strong> — баг, при котором приложение не грузится. Без исправления рекламный бюджет уходит впустую.</div>
-      </div>
-      <div class="check-item">
-        <div class="box"></div>
-        <div class="text"><strong>Обновить приложение в RuStore</strong> — последнее обновление было год назад. Пользователи должны видеть, что приложение «живое».</div>
-      </div>
+<section class="pb-16 md:pb-24">
+  <h2 class="font-headline-lg text-headline-lg text-primary mb-10 text-center">Что нужно сделать до запуска</h2>
+  <div class="max-w-2xl mx-auto space-y-4">
+    <div class="flex items-start gap-4 bg-surface-container-lowest border border-mist-grey rounded-2xl p-5">
+      <span class="w-6 h-6 rounded border-2 border-outline-variant flex-shrink-0 mt-0.5"></span>
+      <div><strong class="text-primary">Починить «белый экран»</strong><p class="text-slate-grey text-sm">Баг, при котором приложение не грузится. Без исправления рекламный бюджет уходит впустую.</p></div>
+    </div>
+    <div class="flex items-start gap-4 bg-surface-container-lowest border border-mist-grey rounded-2xl p-5">
+      <span class="w-6 h-6 rounded border-2 border-outline-variant flex-shrink-0 mt-0.5"></span>
+      <div><strong class="text-primary">Обновить приложение в RuStore</strong><p class="text-slate-grey text-sm">Последнее обновление было год назад. Пользователи должны видеть, что приложение «живое».</p></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ FOOTER ═══════════ -->
-<footer id="footer">
-  <div class="section-inner reveal">
-    <div class="footer-card">
-      <h2>За 2 месяца вы получите<br><span class="gold">600–800 новых пользователей</span></h2>
-      <p>
-        ВКонтакте. Три сегмента аудитории. Два этапа: тест → масштабирование.
-        Цена установки — 60–80&nbsp;₽. План расширения: Яндекс.Директ, лендинг, блогеры.
-      </p>
-      <a href="#" class="footer-cta">Я готов запустить →</a>
-      <div class="footer-note">План подготовлен: 26 июля 2026 • VK Реклама • RuStore</div>
-    </div>
-  </div>
-</footer>
+</main>
 
 <script>
-(function() {
-  var reveals = document.querySelectorAll('.reveal');
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('opacity-100');
+        entry.target.classList.remove('opacity-0', 'translate-y-10');
+      }
     });
-  }, { threshold: 0.12 });
-  reveals.forEach(function(el) { observer.observe(el); });
-})();
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('section').forEach(section => {
+    section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+    observer.observe(section);
+  });
 </script>
 
 </body>
