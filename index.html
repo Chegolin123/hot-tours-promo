@@ -9,8 +9,8 @@
   html { scroll-behavior: smooth; font-size: 16px; }
   body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background: #0a1628;
-    color: #e8edf2;
+    background: #f5f7fa;
+    color: #1a2332;
     line-height: 1.6;
     overflow-x: hidden;
   }
@@ -19,32 +19,32 @@
   .hero {
     position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center;
     text-align: center; padding: 40px 20px;
-    background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 30%, #0d2137 60%, #0a1628 100%);
+    background: linear-gradient(135deg, #f0f2f5 0%, #fafbfc 30%, #f5f7fa 60%, #f0f2f5 100%);
     overflow: hidden;
   }
   .hero::before {
     content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
     background:
-      radial-gradient(circle at 20% 80%, rgba(255,140,30,0.12) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(255,180,50,0.10) 0%, transparent 50%),
-      radial-gradient(circle at 50% 50%, rgba(0,180,216,0.06) 0%, transparent 60%);
+      radial-gradient(circle at 20% 80%, rgba(255,140,30,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255,180,50,0.06) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(0,153,204,0.04) 0%, transparent 60%);
     animation: heroGlow 8s ease-in-out infinite alternate;
   }
   @keyframes heroGlow { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(2%, -2%) scale(1.05); } }
   .hero-content { position: relative; z-index: 1; max-width: 800px; }
   .hero-badge {
-    display: inline-block; background: rgba(255,140,30,0.15); border: 1px solid rgba(255,140,30,0.3);
-    color: #ff9d4d; padding: 8px 24px; border-radius: 50px; font-size: 0.9rem;
+    display: inline-block; background: rgba(255,140,30,0.12); border: 1px solid rgba(255,140,30,0.25);
+    color: #e07820; padding: 8px 24px; border-radius: 50px; font-size: 0.9rem;
     font-weight: 600; letter-spacing: 0.05em; margin-bottom: 32px; animation: fadeInUp 0.6s ease-out;
   }
   .hero h1 {
     font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15;
     margin-bottom: 20px; animation: fadeInUp 0.6s 0.1s ease-out both;
   }
-  .hero h1 .gold { background: linear-gradient(135deg, #ff9d4d, #ffc278); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero h1 .white { color: #fff; }
+  .hero h1 .gold { background: linear-gradient(135deg, #e07820, #f0a040); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero h1 .white { color: #1a2332; }
   .hero-subtitle {
-    font-size: 1.1rem; color: #8899b4; max-width: 520px; margin: 0 auto 40px;
+    font-size: 1.1rem; color: #5a6a7e; max-width: 520px; margin: 0 auto 40px;
     animation: fadeInUp 0.6s 0.2s ease-out both;
   }
   .hero-stats {
@@ -52,202 +52,194 @@
     animation: fadeInUp 0.6s 0.3s ease-out both;
   }
   .hero-stat {
-    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.06);
     border-radius: 16px; padding: 22px 26px; min-width: 130px;
     backdrop-filter: blur(10px); transition: transform 0.3s, border-color 0.3s;
   }
-  .hero-stat:hover { transform: translateY(-4px); border-color: rgba(255,140,30,0.3); }
-  .hero-stat .num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, #ff9d4d, #ffc278); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: block; line-height: 1.1; }
-  .hero-stat .label { font-size: 0.82rem; color: #8899b4; margin-top: 6px; }
+  .hero-stat:hover { transform: translateY(-4px); border-color: rgba(255,140,30,0.35); }
+  .hero-stat .num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, #e07820, #f0a040); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: block; line-height: 1.1; }
+  .hero-stat .label { font-size: 0.82rem; color: #5a6a7e; margin-top: 6px; }
   .scroll-hint {
     position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 8px;
-    color: #556677; font-size: 0.8rem; animation: fadeInUp 0.6s 0.5s ease-out both;
+    color: #aab4c0; font-size: 0.8rem; animation: fadeInUp 0.6s 0.5s ease-out both;
   }
-  .scroll-hint .arrow { width: 20px; height: 20px; border-right: 2px solid #556677; border-bottom: 2px solid #556677; transform: rotate(45deg); animation: scrollBounce 2s infinite; }
+  .scroll-hint .arrow { width: 20px; height: 20px; border-right: 2px solid #aab4c0; border-bottom: 2px solid #aab4c0; transform: rotate(45deg); animation: scrollBounce 2s infinite; }
   @keyframes scrollBounce { 0%, 100% { transform: rotate(45deg) translateY(0); } 50% { transform: rotate(45deg) translateY(6px); } }
   @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
   /* SECTIONS */
   section { padding: 100px 20px; position: relative; }
   .section-inner { max-width: 960px; margin: 0 auto; }
-  .section-tag { display: inline-block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.07em; color: #ff9d4d; text-transform: uppercase; margin-bottom: 16px; }
-  .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; margin-bottom: 14px; color: #fff; line-height: 1.2; }
-  .section-subtitle { color: #8899b4; font-size: 1rem; max-width: 620px; margin-bottom: 44px; }
+  .section-tag { display: inline-block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.07em; color: #e07820; text-transform: uppercase; margin-bottom: 16px; }
+  .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; margin-bottom: 14px; color: #1a2332; line-height: 1.2; }
+  .section-subtitle { color: #5a6a7e; font-size: 1rem; max-width: 620px; margin-bottom: 44px; }
 
   /* Why VK */
-  #why { background: #0d1a2f; }
+  #why { background: #ffffff; }
   .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
   .why-card {
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 16px; padding: 28px 22px; text-align: center; transition: transform 0.3s, border-color 0.3s;
+    background: #fafbfc; border: 1px solid #e8ecf0;
+    border-radius: 16px; padding: 28px 22px; text-align: center; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
   }
-  .why-card:hover { transform: translateY(-4px); border-color: rgba(255,140,30,0.2); }
+  .why-card:hover { transform: translateY(-4px); border-color: rgba(255,140,30,0.3); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
   .why-card .icon { font-size: 2rem; margin-bottom: 12px; display: block; }
-  .why-card .num { font-size: 1.8rem; font-weight: 800; color: #ff9d4d; }
-  .why-card .label { font-size: 0.85rem; color: #8899b4; margin-top: 4px; }
+  .why-card .num { font-size: 1.8rem; font-weight: 800; color: #e07820; }
+  .why-card .label { font-size: 0.85rem; color: #5a6a7e; margin-top: 4px; }
 
   /* USP */
-  #usp { background: #0a1628; }
+  #usp { background: #f5f7fa; }
   .usp-block {
-    background: linear-gradient(135deg, rgba(255,140,30,0.06), rgba(255,180,50,0.04));
-    border: 1px solid rgba(255,140,30,0.15); border-radius: 24px; padding: 48px 40px;
+    background: linear-gradient(135deg, rgba(255,140,30,0.04), rgba(255,180,50,0.03));
+    border: 1px solid rgba(255,140,30,0.2); border-radius: 24px; padding: 48px 40px;
     text-align: center; max-width: 720px; margin: 0 auto;
   }
   .usp-block .usp-quote {
-    font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 700; color: #fff; line-height: 1.4; margin-bottom: 20px;
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 700; color: #1a2332; line-height: 1.4; margin-bottom: 20px;
   }
-  .usp-block .usp-quote .gold { color: #ffc278; }
-  .usp-block .usp-sub { font-size: 0.95rem; color: #8899b4; line-height: 1.6; }
+  .usp-block .usp-quote .gold { color: #e07820; }
+  .usp-block .usp-sub { font-size: 0.95rem; color: #5a6a7e; line-height: 1.6; }
   .usp-vs {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 32px;
   }
   .usp-vs-item {
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+    background: #fafbfc; border: 1px solid #e8ecf0;
     border-radius: 12px; padding: 16px; text-align: center;
   }
-  .usp-vs-item .name { font-weight: 700; color: #fff; font-size: 0.9rem; }
-  .usp-vs-item .type { font-size: 0.78rem; color: #667788; margin-top: 2px; }
-  .usp-vs-item.us .name { color: #ffc278; }
-  .usp-vs-item.us { border-color: rgba(255,140,30,0.2); background: rgba(255,140,30,0.05); }
+  .usp-vs-item .name { font-weight: 700; color: #1a2332; font-size: 0.9rem; }
+  .usp-vs-item .type { font-size: 0.78rem; color: #889999; margin-top: 2px; }
+  .usp-vs-item.us .name { color: #e07820; }
+  .usp-vs-item.us { border-color: rgba(255,140,30,0.3); background: rgba(255,140,30,0.04); }
 
   /* Budget */
-  #budget { background: #0d1a2f; }
-  .budget-bar-wrap { display: flex; border-radius: 20px; overflow: hidden; height: 48px; margin-bottom: 12px; box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
-  .budget-bar-a { background: linear-gradient(135deg, #ff7b1a, #ff9d4d); width: 44%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; color: #0a1628; }
-  .budget-bar-b { background: linear-gradient(135deg, #ff9d4d, #ffc278); width: 56%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; color: #0a1628; }
+  #budget { background: #ffffff; }
+  .budget-bar-wrap { display: flex; border-radius: 20px; overflow: hidden; height: 48px; margin-bottom: 12px; box-shadow: 0 2px 16px rgba(0,0,0,0.08); }
+  .budget-bar-a { background: linear-gradient(135deg, #e07820, #f09030); width: 44%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; color: #fff; }
+  .budget-bar-b { background: linear-gradient(135deg, #f0a040, #ffc278); width: 56%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; color: #3d2000; }
   .budget-legend { display: flex; gap: 32px; flex-wrap: wrap; justify-content: center; margin-bottom: 36px; }
-  .budget-legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 600; }
+  .budget-legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 600; color: #3d3d3d; }
   .budget-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
-  .budget-dot.a { background: #ff7b1a; }
-  .budget-dot.b { background: #ffc278; }
+  .budget-dot.a { background: #e07820; }
+  .budget-dot.b { background: #f0a040; }
   .budget-detail { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
   .budget-item {
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    background: #fafbfc; border: 1px solid #e8ecf0;
     border-radius: 12px; padding: 18px 20px;
   }
-  .budget-item .amt { font-size: 1.4rem; font-weight: 800; color: #ff9d4d; }
-  .budget-item .lbl { font-size: 0.82rem; color: #8899b4; margin-top: 2px; }
+  .budget-item .amt { font-size: 1.4rem; font-weight: 800; color: #e07820; }
+  .budget-item .lbl { font-size: 0.82rem; color: #5a6a7e; margin-top: 2px; }
 
   /* Segments */
-  #segments { background: #0a1628; }
+  #segments { background: #f5f7fa; }
   .segments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
   .segment-card {
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 20px; padding: 32px 24px; transition: transform 0.3s, border-color 0.3s;
+    background: #fafbfc; border: 1px solid #e8ecf0;
+    border-radius: 20px; padding: 32px 24px; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
     position: relative; overflow: hidden;
   }
-  .segment-card:hover { transform: translateY(-6px); border-color: rgba(255,140,30,0.3); }
-  .segment-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #ff7b1a, #ffc278); }
+  .segment-card:hover { transform: translateY(-6px); border-color: rgba(255,140,30,0.4); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+  .segment-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #e07820, #f0a040); }
   .segment-card .emoji { font-size: 2rem; display: block; margin-bottom: 14px; }
-  .segment-card h3 { font-size: 1rem; color: #fff; margin-bottom: 8px; font-weight: 700; }
-  .segment-card .quote { font-size: 0.88rem; color: #ffc278; font-style: italic; margin-bottom: 10px; line-height: 1.4; }
-  .segment-card .who { font-size: 0.78rem; color: #667788; }
-
-  .why-3-note {
-    margin-top: 28px; padding: 20px 24px;
-    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 12px; font-size: 0.9rem; color: #8899b4; line-height: 1.5;
-    text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;
-  }
-  .why-3-note strong { color: #ffc278; }
+  .segment-card h3 { font-size: 1rem; color: #1a2332; margin-bottom: 8px; font-weight: 700; }
+  .segment-card .quote { font-size: 0.88rem; color: #c07018; font-style: italic; margin-bottom: 10px; line-height: 1.4; }
+  .segment-card .who { font-size: 0.78rem; color: #889999; }
 
   /* Geo */
-  #geo { background: #0d1a2f; }
+  #geo { background: #ffffff; }
   .geo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
   .geo-card {
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    background: #fafbfc; border: 1px solid #e8ecf0;
     border-radius: 16px; padding: 24px;
   }
   .geo-card .tier { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; padding: 4px 12px; border-radius: 50px; display: inline-block; margin-bottom: 12px; }
-  .geo-card .tier.t1 { background: rgba(255,140,30,0.2); color: #ff9d4d; }
-  .geo-card .tier.t2 { background: rgba(255,180,50,0.15); color: #ffc278; }
-  .geo-card .tier.t3 { background: rgba(255,255,255,0.06); color: #8899b4; }
-  .geo-card .pct { font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 4px; }
-  .geo-card .cities { font-size: 0.85rem; color: #8899b4; line-height: 1.5; }
+  .geo-card .tier.t1 { background: rgba(255,140,30,0.12); color: #c07018; }
+  .geo-card .tier.t2 { background: rgba(255,180,50,0.15); color: #b87010; }
+  .geo-card .tier.t3 { background: #e8ecf0; color: #5a6a7e; }
+  .geo-card .pct { font-size: 1.8rem; font-weight: 800; color: #1a2332; margin-bottom: 4px; }
+  .geo-card .cities { font-size: 0.85rem; color: #5a6a7e; line-height: 1.5; }
 
   /* CPI breakdown */
-  #cpi { background: #0a1628; }
+  #cpi { background: #f5f7fa; }
   .cpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
   .cpi-card {
     text-align: center; padding: 28px 20px;
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 16px; transition: transform 0.3s;
+    background: #fafbfc; border: 1px solid #e8ecf0;
+    border-radius: 16px; transition: transform 0.3s, box-shadow 0.3s;
   }
-  .cpi-card:hover { transform: translateY(-4px); }
-  .cpi-card .big { font-size: 2.2rem; font-weight: 800; color: #ff9d4d; line-height: 1.1; }
-  .cpi-card.good .big { color: #4ade80; }
-  .cpi-card .label { font-size: 0.85rem; color: #8899b4; margin-top: 6px; }
+  .cpi-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+  .cpi-card .big { font-size: 2.2rem; font-weight: 800; color: #e07820; line-height: 1.1; }
+  .cpi-card.good .big { color: #2d9d5a; }
+  .cpi-card .label { font-size: 0.85rem; color: #5a6a7e; margin-top: 6px; }
 
   /* Safety */
-  #safety { background: #0d1a2f; }
+  #safety { background: #ffffff; }
   .safety-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
   .safety-card {
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    background: #fafbfc; border: 1px solid #e8ecf0;
     border-radius: 16px; padding: 26px 22px;
   }
   .safety-card .icon { font-size: 1.6rem; display: block; margin-bottom: 10px; }
-  .safety-card h3 { font-size: 0.92rem; color: #fff; font-weight: 700; margin-bottom: 6px; }
-  .safety-card p { font-size: 0.83rem; color: #8899b4; line-height: 1.5; }
+  .safety-card h3 { font-size: 0.92rem; color: #1a2332; font-weight: 700; margin-bottom: 6px; }
+  .safety-card p { font-size: 0.83rem; color: #5a6a7e; line-height: 1.5; }
 
   /* Results */
-  #results { background: linear-gradient(135deg, #0d1a2f 0%, #0f2240 50%, #0d1a2f 100%); }
+  #results { background: linear-gradient(135deg, #fafbfc 0%, #f0f2f5 50%, #fafbfc 100%); }
   .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 18px; }
   .result-card {
     text-align: center; padding: 34px 18px;
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 20px; transition: transform 0.3s;
+    background: #ffffff; border: 1px solid #e8ecf0;
+    border-radius: 20px; transition: transform 0.3s, box-shadow 0.3s;
   }
-  .result-card:hover { transform: translateY(-4px); }
-  .result-card .big { font-size: 2.4rem; font-weight: 800; background: linear-gradient(135deg, #ff9d4d, #ffc278); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.1; display: block; }
-  .result-card .label { font-size: 0.85rem; color: #8899b4; margin-top: 8px; }
+  .result-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+  .result-card .big { font-size: 2.4rem; font-weight: 800; background: linear-gradient(135deg, #e07820, #f0a040); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.1; display: block; }
+  .result-card .label { font-size: 0.85rem; color: #5a6a7e; margin-top: 8px; }
 
   /* Warning */
-  #warning { background: #0a1628; }
+  #warning { background: #f5f7fa; }
   .warning-box {
-    background: rgba(255,80,50,0.06); border: 1px solid rgba(255,80,50,0.2);
+    background: rgba(220,60,30,0.04); border: 1px solid rgba(220,60,30,0.2);
     border-radius: 16px; padding: 32px 28px; max-width: 700px; margin: 0 auto;
   }
   .warning-box .warn-icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
-  .warning-box h3 { color: #ff6b4a; font-size: 1.05rem; margin-bottom: 10px; }
-  .warning-box p { color: #ccaaaa; font-size: 0.92rem; line-height: 1.6; }
+  .warning-box h3 { color: #c04030; font-size: 1.05rem; margin-bottom: 10px; }
+  .warning-box p { color: #664040; font-size: 0.92rem; line-height: 1.6; }
 
   /* Checklist */
-  #checklist { background: #0d1a2f; }
+  #checklist { background: #ffffff; }
   .checklist-items { display: flex; flex-direction: column; gap: 14px; }
   .check-item {
     display: flex; align-items: flex-start; gap: 14px;
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+    background: #fafbfc; border: 1px solid #e8ecf0;
     border-radius: 12px; padding: 20px 24px;
   }
-  .check-item .box { flex-shrink: 0; width: 24px; height: 24px; border-radius: 6px; border: 2px solid rgba(255,255,255,0.15); margin-top: 2px; }
-  .check-item .text { font-size: 0.93rem; color: #ccd6e0; }
-  .check-item .text strong { color: #fff; }
+  .check-item .box { flex-shrink: 0; width: 24px; height: 24px; border-radius: 6px; border: 2px solid #ccd0d6; margin-top: 2px; }
+  .check-item .text { font-size: 0.93rem; color: #3d4a5a; }
+  .check-item .text strong { color: #1a2332; }
 
   /* Expansion */
-  #expansion { background: #0a1628; }
+  #expansion { background: #f5f7fa; }
   .exp-timeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
   .exp-card {
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    background: #fafbfc; border: 1px solid #e8ecf0;
     border-radius: 16px; padding: 24px; text-align: center;
   }
-  .exp-card .exp-step { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; color: #ff9d4d; text-transform: uppercase; margin-bottom: 8px; }
-  .exp-card h3 { font-size: 1rem; color: #fff; margin-bottom: 6px; }
-  .exp-card p { font-size: 0.83rem; color: #8899b4; line-height: 1.4; }
+  .exp-card .exp-step { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; color: #e07820; text-transform: uppercase; margin-bottom: 8px; }
+  .exp-card h3 { font-size: 1rem; color: #1a2332; margin-bottom: 6px; }
+  .exp-card p { font-size: 0.83rem; color: #5a6a7e; line-height: 1.4; }
 
   /* Footer */
-  #footer { background: linear-gradient(135deg, #0a1628 0%, #0f2240 100%); text-align: center; padding: 100px 20px; }
+  #footer { background: linear-gradient(135deg, #f0f2f5 0%, #fafbfc 100%); text-align: center; padding: 100px 20px; }
   .footer-card {
     max-width: 580px; margin: 0 auto;
-    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,140,30,0.15);
+    background: #ffffff; border: 1px solid rgba(255,140,30,0.2);
     border-radius: 24px; padding: 48px 36px;
   }
-  .footer-card h2 { font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 16px; line-height: 1.3; }
-  .footer-card h2 .gold { color: #ff9d4d; }
-  .footer-card p { color: #8899b4; margin-bottom: 28px; font-size: 0.95rem; }
-  .footer-cta { display: inline-block; background: linear-gradient(135deg, #ff7b1a, #ff9d4d); color: #0a1628; font-weight: 700; font-size: 1rem; padding: 14px 36px; border-radius: 50px; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 24px rgba(255,140,30,0.25); }
-  .footer-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(255,140,30,0.4); }
-  .footer-note { margin-top: 24px; font-size: 0.78rem; color: #556677; }
+  .footer-card h2 { font-size: 1.5rem; font-weight: 800; color: #1a2332; margin-bottom: 16px; line-height: 1.3; }
+  .footer-card h2 .gold { color: #e07820; }
+  .footer-card p { color: #5a6a7e; margin-bottom: 28px; font-size: 0.95rem; }
+  .footer-cta { display: inline-block; background: linear-gradient(135deg, #e07820, #f09030); color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 36px; border-radius: 50px; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 20px rgba(224,120,32,0.25); }
+  .footer-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(224,120,32,0.4); }
+  .footer-note { margin-top: 24px; font-size: 0.78rem; color: #aab4c0; }
 
   @media (max-width: 640px) {
     section { padding: 60px 14px; }
@@ -363,16 +355,18 @@
 <section id="budget">
   <div class="section-inner">
     <div class="section-tag reveal">Бюджет</div>
-    <h2 class="section-title reveal">50 000 ₽ — только ВКонтакте, без распыления</h2>
-    <p class="section-subtitle reveal">Два этапа: тестируем аудитории → масштабируем победителей.</p>
+    <h2 class="section-title reveal">50 000 ₽ — три шага за 2 месяца</h2>
+    <p class="section-subtitle reveal">Изучаем аудиторию → масштабируем лидеров → подводим итоги.</p>
 
     <div class="budget-bar-wrap reveal">
-      <div class="budget-bar-a">Тест — 22 000 ₽</div>
-      <div class="budget-bar-b">Масштабирование — 28 000 ₽</div>
+      <div class="budget-bar-a">Шаг 1 — Изучение — 22 000 ₽</div>
+      <div class="budget-bar-b" style="width:44%; background: linear-gradient(135deg, #f0a040, #ffc278);">Шаг 2 — Масштаб — 22 000 ₽</div>
+      <div style="width:12%; background: #e8ecf0; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.78rem; color: #5a6a7e;">Шаг 3 — 6k</div>
     </div>
     <div class="budget-legend reveal">
-      <div class="budget-legend-item"><span class="budget-dot a"></span> Тестирование (44%)</div>
-      <div class="budget-legend-item"><span class="budget-dot b"></span> Масштабирование (56%)</div>
+      <div class="budget-legend-item"><span class="budget-dot a"></span> Шаг 1 — Изучение (44%)</div>
+      <div class="budget-legend-item"><span class="budget-dot b"></span> Шаг 2 — Масштабирование (44%)</div>
+      <div class="budget-legend-item"><span class="budget-dot" style="background:#ccd0d6;"></span> Шаг 3 — Оценка (12%)</div>
     </div>
 
     <div class="budget-detail reveal">
@@ -450,6 +444,114 @@
         <div class="pct">25%</div>
         <div class="cities">Уфа, Самара, Нижний Новгород, Красноярск, Владивосток, Калининград</div>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════ SCALING ═══════════ -->
+<section id="scaling">
+  <div class="section-inner">
+    <div class="section-tag reveal">Шаг 2</div>
+    <h2 class="section-title reveal">Масштабирование — недели 3–6 (22 000 ₽)</h2>
+    <p class="section-subtitle reveal">Выбираем лучшие группы по итогам теста и перераспределяем бюджет.</p>
+
+    <div class="phase-cards reveal">
+
+      <div class="phase-card">
+        <div class="phase-num" style="background: linear-gradient(135deg, #e07820, #f09030); color: #fff;">A</div>
+        <div class="phase-body">
+          <h3>Один явный лидер</h3>
+          <div class="phase-budget" style="font-size:0.85rem; color:#e07820; font-weight:600; margin-bottom:12px;">Разрыв по CPI > 25%</div>
+          <div class="budget-detail" style="grid-template-columns:1fr 1fr 1fr;">
+            <div class="budget-item"><div class="amt" style="font-size:1.1rem;">70%</div><div class="lbl">Группа-лидер</div></div>
+            <div class="budget-item"><div class="amt" style="font-size:1.1rem;">20%</div><div class="lbl">Ретаргетинг</div></div>
+            <div class="budget-item"><div class="amt" style="font-size:1.1rem;">10%</div><div class="lbl">Вторая группа</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-num" style="background: linear-gradient(135deg, #f0a040, #ffc278); color: #3d2000;">B</div>
+        <div class="phase-body">
+          <h3>Два лидера с близкими результатами</h3>
+          <div class="phase-budget" style="font-size:0.85rem; color:#e07820; font-weight:600; margin-bottom:12px;">Разрыв по CPI < 25%</div>
+          <div class="budget-detail" style="grid-template-columns:1fr 1fr 1fr;">
+            <div class="budget-item"><div class="amt" style="font-size:1.1rem;">40%</div><div class="lbl">Лидер 1</div></div>
+            <div class="budget-item"><div class="amt" style="font-size:1.1rem;">35%</div><div class="lbl">Лидер 2</div></div>
+            <div class="budget-item"><div class="amt" style="font-size:1.1rem;">25%</div><div class="lbl">Ретаргетинг</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-num" style="background: #e8ecf0; color: #5a6a7e;">C</div>
+        <div class="phase-body">
+          <h3>Все три отстают</h3>
+          <div class="phase-budget" style="font-size:0.85rem; color:#c04030; font-weight:600; margin-bottom:12px;">CPI > 80 у всех групп</div>
+          <p>Останавливаем кампанию. Анализируем причины. Перезапускаем с новыми креативами и скорректированным УТП. Оставшийся бюджет (28&nbsp;000&nbsp;₽) — на вторую попытку.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="safety-grid reveal" style="margin-top:32px;">
+      <div class="safety-card">
+        <span class="icon">🔄</span>
+        <h3>Ротация креативов</h3>
+        <p>Обновление каждые 10–14 дней</p>
+      </div>
+      <div class="safety-card">
+        <span class="icon">👥</span>
+        <h3>Lookalike-аудитория</h3>
+        <p>VK находит похожих на установивших — +15–30% к конверсии</p>
+      </div>
+      <div class="safety-card">
+        <span class="icon">🎯</span>
+        <h3>Усиление ретаргетинга</h3>
+        <p>Аудитория кликнувших-но-не-скачавших растёт → увеличиваем бюджет</p>
+      </div>
+      <div class="safety-card">
+        <span class="icon">📍</span>
+        <h3>Гео-оптимизация</h3>
+        <p>Регионы с CPI 40–50 ₽ получают приоритет над Москвой</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FINAL ═══════════ -->
+<section id="final">
+  <div class="section-inner">
+    <div class="section-tag reveal">Шаг 3</div>
+    <h2 class="section-title reveal">Финальная оценка — недели 7–8 (6 000 ₽)</h2>
+    <p class="section-subtitle reveal">Прекращаем масштабирование. Замеряем результаты. Готовим итоговый отчёт.</p>
+
+    <div class="checklist-items reveal">
+      <div class="check-item">
+        <div class="box"></div>
+        <div class="text"><strong>Сколько всего установок?</strong> — итоговая цифра в RuStore Консоли за 2 месяца</div>
+      </div>
+      <div class="check-item">
+        <div class="box"></div>
+        <div class="text"><strong>Какая группа — чемпион?</strong> — сравниваем CPI и объём по всем трём</div>
+      </div>
+      <div class="check-item">
+        <div class="box"></div>
+        <div class="text"><strong>Какая цена установки?</strong> — общий CPI, по регионам, по Москве</div>
+      </div>
+      <div class="check-item">
+        <div class="box"></div>
+        <div class="text"><strong>Пользователи остаются?</strong> — открытия на 1-й и 7-й день (AppMetrica)</div>
+      </div>
+      <div class="check-item">
+        <div class="box"></div>
+        <div class="text"><strong>Какой формат лучший?</strong> — видео vs карусель vs баннер по CTR и конверсии</div>
+      </div>
+    </div>
+
+    <div class="why-3-note reveal" style="margin-top:28px;">
+      <strong>Что получает заказчик:</strong> итоговый отчёт — цифры, победители, выводы и готовый план расширения на следующий месяц.
     </div>
   </div>
 </section>
@@ -546,9 +648,9 @@
     <div class="warning-box reveal">
       <span class="warn-icon">⚠️</span>
       <h3>Самый свежий отзыв в RuStore — 29 июня 2026:</h3>
-      <p style="color:#fff; font-style:italic; margin-bottom:16px;">«Просто белая страница, ни туда, ни сюда. Сношу эту дрянь» — Анфиса</p>
+      <p style="color:#1a2332; font-style:italic; margin-bottom:16px;">«Просто белая страница, ни туда, ни сюда. Сношу эту дрянь» — Анфиса</p>
       <p>
-        Это не просто плохой отзыв. Это прямые потери бюджета: мы платим за каждый клик по рекламе. Если человек кликает, видит белый экран и закрывает приложение — мы заплатили за клик, но не получили установку. При цене установки 60–80&nbsp;₽ <strong style="color:#ff6b4a">первые 5&nbsp;000–10&nbsp;000&nbsp;₽ рекламного бюджета уйдут впустую</strong>. Баг должен быть исправлен до запуска рекламы.
+        Это не просто плохой отзыв. Это прямые потери бюджета: мы платим за каждый клик по рекламе. Если человек кликает, видит белый экран и закрывает приложение — мы заплатили за клик, но не получили установку. При цене установки 60–80&nbsp;₽ <strong style="color:#c04030">первые 5&nbsp;000–10&nbsp;000&nbsp;₽ рекламного бюджета уйдут впустую</strong>. Баг должен быть исправлен до запуска рекламы.
       </p>
     </div>
   </div>
