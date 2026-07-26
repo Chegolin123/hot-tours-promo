@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>План продвижения — Все Горящие туры Отели</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #0a1628;
+    color: #e8edf2;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 40px 20px;
+    background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 30%, #0d2137 60%, #0a1628 100%);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background:
+      radial-gradient(circle at 20% 80%, rgba(255,140,30,0.12) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255,180,50,0.10) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(0,180,216,0.06) 0%, transparent 60%);
+    animation: heroGlow 8s ease-in-out infinite alternate;
+  }
+  @keyframes heroGlow { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(2%, -2%) scale(1.05); } }
+  .hero-content { position: relative; z-index: 1; max-width: 800px; }
+  .hero-badge {
+    display: inline-block; background: rgba(255,140,30,0.15); border: 1px solid rgba(255,140,30,0.3);
+    color: #ff9d4d; padding: 8px 24px; border-radius: 50px; font-size: 0.9rem;
+    font-weight: 600; letter-spacing: 0.05em; margin-bottom: 32px; animation: fadeInUp 0.6s ease-out;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15;
+    margin-bottom: 20px; animation: fadeInUp 0.6s 0.1s ease-out both;
+  }
+  .hero h1 .gold { background: linear-gradient(135deg, #ff9d4d, #ffc278); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero h1 .white { color: #fff; }
+  .hero-subtitle {
+    font-size: 1.1rem; color: #8899b4; max-width: 520px; margin: 0 auto 40px;
+    animation: fadeInUp 0.6s 0.2s ease-out both;
+  }
+  .hero-stats {
+    display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+    animation: fadeInUp 0.6s 0.3s ease-out both;
+  }
+  .hero-stat {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px; padding: 22px 26px; min-width: 130px;
+    backdrop-filter: blur(10px); transition: transform 0.3s, border-color 0.3s;
+  }
+  .hero-stat:hover { transform: translateY(-4px); border-color: rgba(255,140,30,0.3); }
+  .hero-stat .num { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, #ff9d4d, #ffc278); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: block; line-height: 1.1; }
+  .hero-stat .label { font-size: 0.82rem; color: #8899b4; margin-top: 6px; }
+  .scroll-hint {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: #556677; font-size: 0.8rem; animation: fadeInUp 0.6s 0.5s ease-out both;
+  }
+  .scroll-hint .arrow { width: 20px; height: 20px; border-right: 2px solid #556677; border-bottom: 2px solid #556677; transform: rotate(45deg); animation: scrollBounce 2s infinite; }
+  @keyframes scrollBounce { 0%, 100% { transform: rotate(45deg) translateY(0); } 50% { transform: rotate(45deg) translateY(6px); } }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* SECTIONS */
+  section { padding: 100px 20px; position: relative; }
+  .section-inner { max-width: 960px; margin: 0 auto; }
+  .section-tag { display: inline-block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.07em; color: #ff9d4d; text-transform: uppercase; margin-bottom: 16px; }
+  .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; margin-bottom: 14px; color: #fff; line-height: 1.2; }
+  .section-subtitle { color: #8899b4; font-size: 1rem; max-width: 620px; margin-bottom: 44px; }
+
+  /* Why VK */
+  #why { background: #0d1a2f; }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+  .why-card {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px; padding: 28px 22px; text-align: center; transition: transform 0.3s, border-color 0.3s;
+  }
+  .why-card:hover { transform: translateY(-4px); border-color: rgba(255,140,30,0.2); }
+  .why-card .icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+  .why-card .num { font-size: 1.8rem; font-weight: 800; color: #ff9d4d; }
+  .why-card .label { font-size: 0.85rem; color: #8899b4; margin-top: 4px; }
+
+  /* USP */
+  #usp { background: #0a1628; }
+  .usp-block {
+    background: linear-gradient(135deg, rgba(255,140,30,0.06), rgba(255,180,50,0.04));
+    border: 1px solid rgba(255,140,30,0.15); border-radius: 24px; padding: 48px 40px;
+    text-align: center; max-width: 720px; margin: 0 auto;
+  }
+  .usp-block .usp-quote {
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 700; color: #fff; line-height: 1.4; margin-bottom: 20px;
+  }
+  .usp-block .usp-quote .gold { color: #ffc278; }
+  .usp-block .usp-sub { font-size: 0.95rem; color: #8899b4; line-height: 1.6; }
+  .usp-vs {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 32px;
+  }
+  .usp-vs-item {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px; padding: 16px; text-align: center;
+  }
+  .usp-vs-item .name { font-weight: 700; color: #fff; font-size: 0.9rem; }
+  .usp-vs-item .type { font-size: 0.78rem; color: #667788; margin-top: 2px; }
+  .usp-vs-item.us .name { color: #ffc278; }
+  .usp-vs-item.us { border-color: rgba(255,140,30,0.2); background: rgba(255,140,30,0.05); }
+
+  /* Budget */
+  #budget { background: #0d1a2f; }
+  .budget-bar-wrap { display: flex; border-radius: 20px; overflow: hidden; height: 48px; margin-bottom: 12px; box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+  .budget-bar-a { background: linear-gradient(135deg, #ff7b1a, #ff9d4d); width: 44%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; color: #0a1628; }
+  .budget-bar-b { background: linear-gradient(135deg, #ff9d4d, #ffc278); width: 56%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; color: #0a1628; }
+  .budget-legend { display: flex; gap: 32px; flex-wrap: wrap; justify-content: center; margin-bottom: 36px; }
+  .budget-legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 600; }
+  .budget-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .budget-dot.a { background: #ff7b1a; }
+  .budget-dot.b { background: #ffc278; }
+  .budget-detail { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .budget-item {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px; padding: 18px 20px;
+  }
+  .budget-item .amt { font-size: 1.4rem; font-weight: 800; color: #ff9d4d; }
+  .budget-item .lbl { font-size: 0.82rem; color: #8899b4; margin-top: 2px; }
+
+  /* Segments */
+  #segments { background: #0a1628; }
+  .segments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .segment-card {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px; padding: 32px 24px; transition: transform 0.3s, border-color 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .segment-card:hover { transform: translateY(-6px); border-color: rgba(255,140,30,0.3); }
+  .segment-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #ff7b1a, #ffc278); }
+  .segment-card .emoji { font-size: 2rem; display: block; margin-bottom: 14px; }
+  .segment-card h3 { font-size: 1rem; color: #fff; margin-bottom: 8px; font-weight: 700; }
+  .segment-card .quote { font-size: 0.88rem; color: #ffc278; font-style: italic; margin-bottom: 10px; line-height: 1.4; }
+  .segment-card .who { font-size: 0.78rem; color: #667788; }
+
+  .why-3-note {
+    margin-top: 28px; padding: 20px 24px;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px; font-size: 0.9rem; color: #8899b4; line-height: 1.5;
+    text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;
+  }
+  .why-3-note strong { color: #ffc278; }
+
+  /* Geo */
+  #geo { background: #0d1a2f; }
+  .geo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  .geo-card {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px; padding: 24px;
+  }
+  .geo-card .tier { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; padding: 4px 12px; border-radius: 50px; display: inline-block; margin-bottom: 12px; }
+  .geo-card .tier.t1 { background: rgba(255,140,30,0.2); color: #ff9d4d; }
+  .geo-card .tier.t2 { background: rgba(255,180,50,0.15); color: #ffc278; }
+  .geo-card .tier.t3 { background: rgba(255,255,255,0.06); color: #8899b4; }
+  .geo-card .pct { font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 4px; }
+  .geo-card .cities { font-size: 0.85rem; color: #8899b4; line-height: 1.5; }
+
+  /* CPI breakdown */
+  #cpi { background: #0a1628; }
+  .cpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+  .cpi-card {
+    text-align: center; padding: 28px 20px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px; transition: transform 0.3s;
+  }
+  .cpi-card:hover { transform: translateY(-4px); }
+  .cpi-card .big { font-size: 2.2rem; font-weight: 800; color: #ff9d4d; line-height: 1.1; }
+  .cpi-card.good .big { color: #4ade80; }
+  .cpi-card .label { font-size: 0.85rem; color: #8899b4; margin-top: 6px; }
+
+  /* Safety */
+  #safety { background: #0d1a2f; }
+  .safety-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
+  .safety-card {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px; padding: 26px 22px;
+  }
+  .safety-card .icon { font-size: 1.6rem; display: block; margin-bottom: 10px; }
+  .safety-card h3 { font-size: 0.92rem; color: #fff; font-weight: 700; margin-bottom: 6px; }
+  .safety-card p { font-size: 0.83rem; color: #8899b4; line-height: 1.5; }
+
+  /* Results */
+  #results { background: linear-gradient(135deg, #0d1a2f 0%, #0f2240 50%, #0d1a2f 100%); }
+  .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 18px; }
+  .result-card {
+    text-align: center; padding: 34px 18px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px; transition: transform 0.3s;
+  }
+  .result-card:hover { transform: translateY(-4px); }
+  .result-card .big { font-size: 2.4rem; font-weight: 800; background: linear-gradient(135deg, #ff9d4d, #ffc278); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.1; display: block; }
+  .result-card .label { font-size: 0.85rem; color: #8899b4; margin-top: 8px; }
+
+  /* Warning */
+  #warning { background: #0a1628; }
+  .warning-box {
+    background: rgba(255,80,50,0.06); border: 1px solid rgba(255,80,50,0.2);
+    border-radius: 16px; padding: 32px 28px; max-width: 700px; margin: 0 auto;
+  }
+  .warning-box .warn-icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+  .warning-box h3 { color: #ff6b4a; font-size: 1.05rem; margin-bottom: 10px; }
+  .warning-box p { color: #ccaaaa; font-size: 0.92rem; line-height: 1.6; }
+
+  /* Checklist */
+  #checklist { background: #0d1a2f; }
+  .checklist-items { display: flex; flex-direction: column; gap: 14px; }
+  .check-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px; padding: 20px 24px;
+  }
+  .check-item .box { flex-shrink: 0; width: 24px; height: 24px; border-radius: 6px; border: 2px solid rgba(255,255,255,0.15); margin-top: 2px; }
+  .check-item .text { font-size: 0.93rem; color: #ccd6e0; }
+  .check-item .text strong { color: #fff; }
+
+  /* Expansion */
+  #expansion { background: #0a1628; }
+  .exp-timeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .exp-card {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px; padding: 24px; text-align: center;
+  }
+  .exp-card .exp-step { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; color: #ff9d4d; text-transform: uppercase; margin-bottom: 8px; }
+  .exp-card h3 { font-size: 1rem; color: #fff; margin-bottom: 6px; }
+  .exp-card p { font-size: 0.83rem; color: #8899b4; line-height: 1.4; }
+
+  /* Footer */
+  #footer { background: linear-gradient(135deg, #0a1628 0%, #0f2240 100%); text-align: center; padding: 100px 20px; }
+  .footer-card {
+    max-width: 580px; margin: 0 auto;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,140,30,0.15);
+    border-radius: 24px; padding: 48px 36px;
+  }
+  .footer-card h2 { font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 16px; line-height: 1.3; }
+  .footer-card h2 .gold { color: #ff9d4d; }
+  .footer-card p { color: #8899b4; margin-bottom: 28px; font-size: 0.95rem; }
+  .footer-cta { display: inline-block; background: linear-gradient(135deg, #ff7b1a, #ff9d4d); color: #0a1628; font-weight: 700; font-size: 1rem; padding: 14px 36px; border-radius: 50px; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 24px rgba(255,140,30,0.25); }
+  .footer-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(255,140,30,0.4); }
+  .footer-note { margin-top: 24px; font-size: 0.78rem; color: #556677; }
+
+  @media (max-width: 640px) {
+    section { padding: 60px 14px; }
+    .hero { min-height: auto; padding: 80px 14px 100px; }
+    .hero-stats { gap: 10px; }
+    .hero-stat { padding: 14px 16px; min-width: 100px; }
+    .hero-stat .num { font-size: 1.4rem; }
+    .budget-bar-wrap { height: 36px; border-radius: 14px; }
+    .budget-bar-a, .budget-bar-b { font-size: 0.7rem; }
+    .result-card .big { font-size: 1.8rem; }
+    .usp-block { padding: 32px 24px; }
+    .footer-card { padding: 32px 24px; }
+  }
+
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">📱 План продвижения в RuStore</div>
+    <h1>
+      <span class="gold">Все Горящие туры Отели</span><br>
+      <span class="white">800 новых пользователей за 2 месяца</span>
+    </h1>
+    <p class="hero-subtitle">
+      Таргетированная реклама ВКонтакте. Бюджет 50&nbsp;000&nbsp;₽.
+      Находим работающую аудиторию и масштабируем результат.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="num">50 000 ₽</span>
+        <span class="label">Бюджет</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">3 сегмента</span>
+        <span class="label">Аудитории</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">600–800</span>
+        <span class="label">Установок</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">60–80 ₽</span>
+        <span class="label">Цена установки</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Что внутри</span>
+    <div class="arrow"></div>
+  </div>
+</header>
+
+<!-- ═══════════ WHY VK ═══════════ -->
+<section id="why">
+  <div class="section-inner">
+    <div class="section-tag reveal">Площадка</div>
+    <h2 class="section-title reveal">Почему ВКонтакте?</h2>
+    <p class="section-subtitle reveal">Главная социальная сеть России и лучшее место для поиска туристической аудитории.</p>
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <span class="icon">👥</span>
+        <div class="num">93 млн</div>
+        <div class="label">пользователей в месяц</div>
+      </div>
+      <div class="why-card">
+        <span class="icon">✈️</span>
+        <div class="num">Топ-3</div>
+        <div class="label">категория контента — путешествия</div>
+      </div>
+      <div class="why-card">
+        <span class="icon">💰</span>
+        <div class="num">50–120 ₽</div>
+        <div class="label">средняя цена установки в travel</div>
+      </div>
+      <div class="why-card">
+        <span class="icon">📹</span>
+        <div class="num">×2,8</div>
+        <div class="label">выше CTR у видео против текста</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ USP ═══════════ -->
+<section id="usp">
+  <div class="section-inner">
+    <div class="section-tag reveal">Позиционирование</div>
+    <h2 class="section-title reveal">Чем мы отличаемся от конкурентов</h2>
+    <div class="usp-block reveal">
+      <p class="usp-quote">
+        «Мы <span class="gold">не туроператор</span>.<br>Мы сравниваем всех — и находим лучшую цену.»
+      </p>
+      <p class="usp-sub">
+        TEZ TOUR продаёт только свои туры. Pegas — только свои. Coral — только свои.<br>
+        А мы агрегируем 15+ туроператоров. Нам всё равно, у кого вы купите — мы просто находим, где дешевле.
+      </p>
+      <div class="usp-vs">
+        <div class="usp-vs-item"><div class="name">TEZ TOUR</div><div class="type">Туроператор</div></div>
+        <div class="usp-vs-item"><div class="name">Pegas</div><div class="type">Туроператор</div></div>
+        <div class="usp-vs-item"><div class="name">Coral Travel</div><div class="type">Туроператор</div></div>
+        <div class="usp-vs-item us"><div class="name">Мы ★</div><div class="type">Независимый агрегатор</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ BUDGET ═══════════ -->
+<section id="budget">
+  <div class="section-inner">
+    <div class="section-tag reveal">Бюджет</div>
+    <h2 class="section-title reveal">50 000 ₽ — только ВКонтакте, без распыления</h2>
+    <p class="section-subtitle reveal">Два этапа: тестируем аудитории → масштабируем победителей.</p>
+
+    <div class="budget-bar-wrap reveal">
+      <div class="budget-bar-a">Тест — 22 000 ₽</div>
+      <div class="budget-bar-b">Масштабирование — 28 000 ₽</div>
+    </div>
+    <div class="budget-legend reveal">
+      <div class="budget-legend-item"><span class="budget-dot a"></span> Тестирование (44%)</div>
+      <div class="budget-legend-item"><span class="budget-dot b"></span> Масштабирование (56%)</div>
+    </div>
+
+    <div class="budget-detail reveal">
+      <div class="budget-item">
+        <div class="amt">6 500 ₽</div>
+        <div class="lbl">Сегмент ① — Выгодные туры</div>
+      </div>
+      <div class="budget-item">
+        <div class="amt">6 500 ₽</div>
+        <div class="lbl">Сегмент ② — Семейный отдых</div>
+      </div>
+      <div class="budget-item">
+        <div class="amt">6 000 ₽</div>
+        <div class="lbl">Сегмент ③ — Внутренний туризм</div>
+      </div>
+      <div class="budget-item">
+        <div class="amt">3 000 ₽</div>
+        <div class="lbl">Ретаргетинг</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SEGMENTS ═══════════ -->
+<section id="segments">
+  <div class="section-inner">
+    <div class="section-tag reveal">Аудитория</div>
+    <h2 class="section-title reveal">3 сегмента — чёткий тест без распыления</h2>
+    <p class="section-subtitle reveal">Каждая группа исключает аудитории двух других — бюджет не дублируется на одного человека.</p>
+
+    <div class="segments-grid reveal">
+      <div class="segment-card">
+        <span class="emoji">🔥</span>
+        <h3>Выгодные туры</h3>
+        <p class="quote">«Переплачиваешь до 30%? Сравни 15 туроператоров за 2 минуты»</p>
+        <p class="who">25–40 лет, ищут скидки, средний доход и ниже. Осеннее бронирование — как вариация креатива.</p>
+      </div>
+      <div class="segment-card">
+        <span class="emoji">👨‍👩‍👧‍👦</span>
+        <h3>Семейный отдых</h3>
+        <p class="quote">«Идеальный отель для семьи за 2 минуты — все операторы в одном приложении»</p>
+        <p class="who">30–50 лет, семьи с детьми, доход средний и выше</p>
+      </div>
+      <div class="segment-card">
+        <span class="emoji">🏔️</span>
+        <h3>Отдых в России</h3>
+        <p class="quote">«Алтай, Дагестан, Карелия — туры от 15 000 ₽. Сравни цены всех операторов»</p>
+        <p class="who">30–55 лет, внутренний туризм, средний доход</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ GEO ═══════════ -->
+<section id="geo">
+  <div class="section-inner">
+    <div class="section-tag reveal">География</div>
+    <h2 class="section-title reveal">Стартуем с регионов — масштабируемся на Москву</h2>
+    <p class="section-subtitle reveal">В регионах цена установки на 30–40% ниже. Сначала находим работающую связку на дешёвой аудитории — потом завоёвываем столицы.</p>
+
+    <div class="geo-grid reveal">
+      <div class="geo-card">
+        <span class="tier t2">Приоритет</span>
+        <div class="pct">45%</div>
+        <div class="cities">Казань, Екатеринбург, Новосибирск, Краснодар, Ростов-на-Дону</div>
+      </div>
+      <div class="geo-card">
+        <span class="tier t1">Столицы</span>
+        <div class="pct">30%</div>
+        <div class="cities">Москва и Московская область, Санкт-Петербург и Ленобласть</div>
+      </div>
+      <div class="geo-card">
+        <span class="tier t3">Охват</span>
+        <div class="pct">25%</div>
+        <div class="cities">Уфа, Самара, Нижний Новгород, Красноярск, Владивосток, Калининград</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CPI BREAKDOWN ═══════════ -->
+<section id="cpi">
+  <div class="section-inner">
+    <div class="section-tag reveal">Стоимость установки</div>
+    <h2 class="section-title reveal">CPI: реалистичный прогноз по регионам</h2>
+    <p class="section-subtitle reveal">В регионах — дешевле, в Москве — дороже. Усреднённый прогноз — консервативный.</p>
+
+    <div class="cpi-grid reveal">
+      <div class="cpi-card">
+        <div class="big">60–80 ₽</div>
+        <div class="label">В среднем по всем городам</div>
+      </div>
+      <div class="cpi-card good">
+        <div class="big">40–60 ₽</div>
+        <div class="label">Регионы: Казань, Екатеринбург, Новосибирск</div>
+      </div>
+      <div class="cpi-card">
+        <div class="big">70–90 ₽</div>
+        <div class="label">Москва и Санкт-Петербург</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SAFETY ═══════════ -->
+<section id="safety">
+  <div class="section-inner">
+    <div class="section-tag reveal">Защита бюджета</div>
+    <h2 class="section-title reveal">Как не сольём деньги</h2>
+
+    <div class="safety-grid reveal">
+      <div class="safety-card">
+        <span class="icon">🛑</span>
+        <h3>Стоп-сигнал на 5-й день</h3>
+        <p>CPI > 100 ₽ → отключаем сегмент немедленно, не ждём 2 недели.</p>
+      </div>
+      <div class="safety-card">
+        <span class="icon">🔄</span>
+        <h3>Ротация креативов</h3>
+        <p>Замена на 10-й день. Далее каждые 10–14 дней — против выгорания аудитории.</p>
+      </div>
+      <div class="safety-card">
+        <span class="icon">🚫</span>
+        <h3>Кросс-исключения</h3>
+        <p>Каждая группа исключает аудитории двух других. Один человек не видит рекламу из трёх групп.</p>
+      </div>
+      <div class="safety-card">
+        <span class="icon">🎯</span>
+        <h3>Ретаргетинг с 1-й недели</h3>
+        <p>После 300+ кликов — дожимаем баннером. Самые дешёвые установки.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ RESULTS ═══════════ -->
+<section id="results">
+  <div class="section-inner">
+    <div class="section-tag reveal">Прогноз</div>
+    <h2 class="section-title reveal">Что получим за 50 000 ₽</h2>
+    <p class="section-subtitle reveal">Консервативная оценка. При успешном тесте в регионах — показатели будут выше.</p>
+
+    <div class="results-grid reveal">
+      <div class="result-card">
+        <span class="big">150–200K</span>
+        <span class="label">увидят рекламу</span>
+      </div>
+      <div class="result-card">
+        <span class="big">1,5–3K</span>
+        <span class="label">перейдут по рекламе</span>
+      </div>
+      <div class="result-card">
+        <span class="big">600–800</span>
+        <span class="label">скачают приложение</span>
+      </div>
+      <div class="result-card">
+        <span class="big">60–80 ₽</span>
+        <span class="label">средняя цена установки</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ WARNING ═══════════ -->
+<section id="warning">
+  <div class="section-inner">
+    <div class="section-tag reveal">Критично</div>
+    <h2 class="section-title reveal">Что будет, если не починить «белый экран»</h2>
+
+    <div class="warning-box reveal">
+      <span class="warn-icon">⚠️</span>
+      <h3>Самый свежий отзыв в RuStore — 29 июня 2026:</h3>
+      <p style="color:#fff; font-style:italic; margin-bottom:16px;">«Просто белая страница, ни туда, ни сюда. Сношу эту дрянь» — Анфиса</p>
+      <p>
+        Это не просто плохой отзыв. Это прямые потери бюджета: мы платим за каждый клик по рекламе. Если человек кликает, видит белый экран и закрывает приложение — мы заплатили за клик, но не получили установку. При цене установки 60–80&nbsp;₽ <strong style="color:#ff6b4a">первые 5&nbsp;000–10&nbsp;000&nbsp;₽ рекламного бюджета уйдут впустую</strong>. Баг должен быть исправлен до запуска рекламы.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EXPANSION ═══════════ -->
+<section id="expansion">
+  <div class="section-inner">
+    <div class="section-tag reveal">Что дальше</div>
+    <h2 class="section-title reveal">Этап 2: план расширения</h2>
+    <p class="section-subtitle reveal">После успешного теста — масштабируемся. Бюджет от 150 000 ₽/мес.</p>
+
+    <div class="exp-timeline reveal">
+      <div class="exp-card">
+        <div class="exp-step">2A</div>
+        <h3>Лендинг</h3>
+        <p>Одностраничный сайт для прогрева перед RuStore и сбора аудитории</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-step">2B</div>
+        <h3>Яндекс.Директ</h3>
+        <p>Поисковая реклама — ловим горячий спрос по ключевым запросам</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-step">2C</div>
+        <h3>VK Сообщество</h3>
+        <p>Группа с контентом: подборки туров, лайфхаки, UGC</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-step">2D</div>
+        <h3>Блогеры</h3>
+        <p>Посевы у travel-блогеров — конверсия в 3× выше прямой рекламы</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CHECKLIST ═══════════ -->
+<section id="checklist">
+  <div class="section-inner">
+    <div class="section-tag reveal">До запуска</div>
+    <h2 class="section-title reveal">Что нужно сделать перед стартом</h2>
+
+    <div class="checklist-items reveal">
+      <div class="check-item">
+        <div class="box"></div>
+        <div class="text"><strong>Починить «белый экран»</strong> — баг, при котором приложение не грузится. Без исправления рекламный бюджет уходит впустую.</div>
+      </div>
+      <div class="check-item">
+        <div class="box"></div>
+        <div class="text"><strong>Обновить приложение в RuStore</strong> — последнее обновление было год назад. Пользователи должны видеть, что приложение «живое».</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer id="footer">
+  <div class="section-inner reveal">
+    <div class="footer-card">
+      <h2>За 2 месяца вы получите<br><span class="gold">600–800 новых пользователей</span></h2>
+      <p>
+        ВКонтакте. Три сегмента аудитории. Два этапа: тест → масштабирование.
+        Цена установки — 60–80&nbsp;₽. План расширения: Яндекс.Директ, лендинг, блогеры.
+      </p>
+      <a href="#" class="footer-cta">Я готов запустить →</a>
+      <div class="footer-note">План подготовлен: 26 июля 2026 • VK Реклама • RuStore</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(function(el) { observer.observe(el); });
+})();
+</script>
+
+</body>
+</html>
